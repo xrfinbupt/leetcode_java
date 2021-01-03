@@ -1,5 +1,7 @@
 package high_frequency.easy;
 
+import common.ListNode;
+
 // https://leetcode-cn.com/problems/reverse-linked-list-ii/
 // https://github.com/azl397985856/leetcode/blob/master/problems/92.reverse-linked-list-ii.md
 public class no3_reverse_linked_list_ii {

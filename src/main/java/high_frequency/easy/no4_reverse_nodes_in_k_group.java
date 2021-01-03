@@ -1,5 +1,7 @@
 package high_frequency.easy;
 
+import common.ListNode;
+
 // https://github.com/azl397985856/leetcode/blob/master/problems/25.reverse-nodes-in-k-groups.md
 public class no4_reverse_nodes_in_k_group {
 

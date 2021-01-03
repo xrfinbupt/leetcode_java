@@ -1,9 +1,12 @@
 package high_frequency.easy;
 
+import common.ListNode;
+
 // https://leetcode-cn.com/problems/reverse-linked-list/
 // https://github.com/azl397985856/leetcode/blob/master/problems/206.reverse-linked-list.md
 public class no2_reverse_linked_list {
 
+    // 方法1 递归
     public ListNode reverseList(ListNode head) {
         if(head==null) return head;
 
@@ -22,7 +25,7 @@ public class no2_reverse_linked_list {
         return reverseListDeep(head,next);
     }
 
-
+    // 方法2 迭代
     public ListNode reverseList1(ListNode head) {
         ListNode pre = null;
         if(head == null || head.next ==null)

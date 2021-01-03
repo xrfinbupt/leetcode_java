@@ -7,7 +7,7 @@ package high_frequency.easy;
 
 public class no9_maximum_subarray {
 
-    // method1 暴力法+剪枝法
+    // 方法1 暴力法+剪枝法
     // 时间复杂度 o(n^2)
     public int maxSubArray_method1(int[] nums) {
         if(nums==null || nums.length==0) return Integer.MIN_VALUE;
@@ -25,7 +25,7 @@ public class no9_maximum_subarray {
         return max;
     }
 
-    // method2 合理利用规则 max= preSum(j) - preSum(i) i为-1到j-1之间使preSum为最小值
+    // 方法2 合理利用规则 max= preSum(j) - preSum(i) i为-1到j-1之间使preSum为最小值
     // 时间复杂度 o(n)
     public int maxSubArray_method2(int[] nums) {
         if(nums==null || nums.length==0) return Integer.MIN_VALUE;
@@ -50,9 +50,10 @@ public class no9_maximum_subarray {
         return max;
     }
 
-    // 动态规划 首先要计算出
-    // 初始值 currMax = nums[0]  max = currMax
-    // 递推公式 currMax = Math.max(currMax + nums[i],nums[i])
+    // 方法3 动态规划
+    // 首先要计算出
+    //      初始值 currMax = nums[0]  max = currMax
+    //      递推公式 currMax = Math.max(currMax + nums[i],nums[i])
     public int maxSubArray_method3(int[] nums) {
         if(nums==null || nums.length==0) return Integer.MIN_VALUE;
 
@@ -67,7 +68,7 @@ public class no9_maximum_subarray {
         return max;
     }
 
-    // 分治法（我目前还不是很熟悉）
+    // 方法4 分治法
     public int maxSubArray_method4(int[] nums) {
         if(nums==null || nums.length==0) return Integer.MIN_VALUE;
 

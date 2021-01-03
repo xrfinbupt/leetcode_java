@@ -1,5 +1,7 @@
 package high_frequency.easy;
 
+import common.ListNode;
+
 // https://leetcode-cn.com/problems/merge-two-sorted-lists
 public class no7_merge_two_sorted_lists {
 

@@ -1,16 +1,15 @@
-package high_frequency.easy;
+package common;
 
 import java.util.LinkedList;
 
 public class TreeNode {
-    int val;
+    public int val;
+    public TreeNode right;
+    public TreeNode left;
 
-    TreeNode(int val) {
+    public TreeNode(int val) {
         this.val = val;
     }
-
-    TreeNode right;
-    TreeNode left;
 
     public static TreeNode getTreeNode(Integer[] nums) {
         if (nums.length == 0) {
