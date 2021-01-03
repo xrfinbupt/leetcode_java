@@ -4,7 +4,6 @@ package high_frequency.easy;
 // https://leetcode-cn.com/problems/maximum-subarray/
 // 简要的说明
 // 能用几种方法解答
-
 public class no9_maximum_subarray {
 
     /**
