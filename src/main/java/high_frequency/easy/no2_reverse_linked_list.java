@@ -8,30 +8,30 @@ public class no2_reverse_linked_list {
 
     // 方法1 递归
     public ListNode reverseList(ListNode head) {
-        if(head==null) return head;
+        if (head == null) return head;
 
-        return reverseListDeep(null,head);
+        return reverseListDeep(null, head);
     }
 
-    public ListNode reverseListDeep(ListNode pre,ListNode head) {
-        if(head==null) return pre;
+    public ListNode reverseListDeep(ListNode pre, ListNode head) {
+        if (head == null) return pre;
 
         ListNode next = head.next;
         head.next = pre;
 
-        if(next==null)
+        if (next == null)
             return head;
 
-        return reverseListDeep(head,next);
+        return reverseListDeep(head, next);
     }
 
     // 方法2 迭代
     public ListNode reverseList1(ListNode head) {
         ListNode pre = null;
-        if(head == null || head.next ==null)
+        if (head == null || head.next == null)
             return head;
         ListNode curr = head;
-        while(curr!=null){
+        while (curr != null) {
             ListNode temp = curr.next;
             curr.next = pre;
             pre = curr;

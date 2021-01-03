@@ -8,29 +8,28 @@ public class no6_valid_parentheses {
         LinkedList stack = new LinkedList<Character>();
 
         int len = s.length();
-        for(int i=0;i<len;i++){
+        for (int i = 0; i < len; i++) {
             char ch = s.charAt(i);
-            if(ch == ')'){
-                if(stack.size()<=0) return false;
+            if (ch == ')') {
+                if (stack.size() <= 0) return false;
 
-                Character character = (Character)stack.pop();
-                if(character.charValue()!='(') return false;
-            }else if(ch == '}'){
-                if(stack.size()<=0) return false;
+                Character character = (Character) stack.pop();
+                if (character.charValue() != '(') return false;
+            } else if (ch == '}') {
+                if (stack.size() <= 0) return false;
 
-                Character character = (Character)stack.pop();
-                if(character.charValue()!='{') return false;
-            }
-            else if(ch == ']'){
-                if(stack.size()<=0) return false;
+                Character character = (Character) stack.pop();
+                if (character.charValue() != '{') return false;
+            } else if (ch == ']') {
+                if (stack.size() <= 0) return false;
 
-                Character character = (Character)stack.pop();
-                if(character.charValue()!='[') return false;
-            }else{
+                Character character = (Character) stack.pop();
+                if (character.charValue() != '[') return false;
+            } else {
                 stack.push(ch);
             }
         }
-        if(stack.size()>0) return false;
+        if (stack.size() > 0) return false;
         return true;
     }
 }

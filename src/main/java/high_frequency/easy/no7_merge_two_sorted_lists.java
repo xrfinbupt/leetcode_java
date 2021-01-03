@@ -7,37 +7,37 @@ public class no7_merge_two_sorted_lists {
 
     // 新链表是通过拼接给定的两个链表的所有节点组成的
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        if(l1==null) return l2;
-        if(l2==null) return l1;
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
 
         ListNode head = null;
         ListNode pre = null;
 
-        while(l1 != null || l2 != null){
-            if(l1==null){
+        while (l1 != null || l2 != null) {
+            if (l1 == null) {
                 pre.next = l2;
                 pre = pre.next;
                 l2 = l2.next;
-            }else if(l2==null){
+            } else if (l2 == null) {
                 pre.next = l1;
                 pre = pre.next;
                 l1 = l1.next;
-            } else if(l1.val <= l2.val){
-                if(head==null) {
+            } else if (l1.val <= l2.val) {
+                if (head == null) {
                     head = l1;
                     pre = head;
-                } else{
+                } else {
                     pre.next = l1;
 
                     pre = pre.next;
                 }
 
                 l1 = l1.next;
-            }else{
-                if(head==null) {
+            } else {
+                if (head == null) {
                     head = l2;
                     pre = head;
-                } else{
+                } else {
                     pre.next = l2;
 
                     pre = pre.next;
@@ -49,7 +49,7 @@ public class no7_merge_two_sorted_lists {
         return head;
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         no7_merge_two_sorted_lists obj = new no7_merge_two_sorted_lists();
         ListNode root1 = new ListNode(1);
         ListNode p = root1;
@@ -63,6 +63,6 @@ public class no7_merge_two_sorted_lists {
         p = p.next;
         p.next = new ListNode(4);
 
-        obj.mergeTwoLists(root1,root2);
+        obj.mergeTwoLists(root1, root2);
     }
 }
