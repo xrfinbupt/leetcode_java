@@ -3,7 +3,9 @@ package high_frequency.easy;
 import com.alibaba.fastjson.JSON;
 import common.TreeNode;
 
-// https://github.com/azl397985856/leetcode/blob/master/problems/binode-lcci.md
+/**
+ * https://github.com/azl397985856/leetcode/blob/master/problems/binode-lcci.md
+ */
 public class no1_binode_lcci {
     TreeNode first = null;
 
