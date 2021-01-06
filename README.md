@@ -9,6 +9,8 @@ Objective: To improve code ability and thinking ability
 
 https://github.com/azl397985856/leetcode/blob/master/collections/easy.md
 
+https://github.com/labuladong/fucking-algorithm （这个也是不错的）
+
 
 https://v2ex.com/t/723418#reply10 说几个 leetcode 上看似简单却又非常困难的问题
 同时这也回答了另一个问题：面试的时候怎么判断面试者是不是速成的？ 很简单，认真学过算法的科班学生，多少会对这些问题有些 sense 。
