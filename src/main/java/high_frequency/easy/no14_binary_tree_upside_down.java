@@ -51,10 +51,12 @@ import java.util.Queue;
 public class no14_binary_tree_upside_down {
 
     /**
+     * 方法1 迭代
+     *
      * @param root: the root of binary tree
      * @return: new root
      */
-    public TreeNode upsideDownBinaryTree(TreeNode root) {
+    public TreeNode upsideDownBinaryTree_method1(TreeNode root) {
         if (root == null || root.left == null && root.right == null) return root;
 
         HashMap<TreeNode, TreeNode> map = new HashMap<>();
@@ -89,5 +91,23 @@ public class no14_binary_tree_upside_down {
             }
         }
         return head;
+    }
+
+    /**
+     * 方法2 递归
+     *
+     * @param root
+     * @return
+     */
+    public TreeNode upsideDownBinaryTree_method2(TreeNode root) {
+        if (root == null || root.left == null && root.right == null) return root;
+
+        TreeNode node = upsideDownBinaryTree_method2(root.left);
+        root.left.left = root.right;
+        root.left.right = root;
+        root.left = null;
+        root.right = null;
+
+        return node;
     }
 }
