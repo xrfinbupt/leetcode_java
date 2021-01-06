@@ -8,6 +8,7 @@ Objective: To improve code ability and thinking ability
 按照这个顺序刷题，并尽可能想到、写出所有方法
 
 https://github.com/azl397985856/leetcode/blob/master/collections/easy.md
+https://github.com/labuladong/fucking-algorithm （这个也是不错的）
 
 
 https://v2ex.com/t/723418#reply10 说几个 leetcode 上看似简单却又非常困难的问题
