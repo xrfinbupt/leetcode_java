@@ -19,3 +19,5 @@ https://v2ex.com/t/723418#reply10 说几个 leetcode 上看似简单却又非常
 2021年1月10日有感：刷题过程很痛苦 需要自己不断找方法 刺激这个过程 别放弃 
 ```
 
+About me
+> 从事Java后端开发，工作了七年的loser。看了[《资深技术Leader曹乐：如何成为技术大牛》](https://mp.weixin.qq.com/s/PpesrPQ6y0s1gtLOC3jeAQ) 这篇文章后 ，决心努力提高自己的代码能力和解决问题能力。
