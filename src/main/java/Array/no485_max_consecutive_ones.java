@@ -11,7 +11,7 @@ package Array;
  *
  * https://leetcode-cn.com/problems/max-consecutive-ones/
  */
-public class max_consecutive_ones {
+public class no485_max_consecutive_ones {
     public int findMaxConsecutiveOnes(int[] nums) {
         if(nums==null || nums.length==0) return 0;
 
