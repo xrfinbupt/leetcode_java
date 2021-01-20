@@ -24,7 +24,7 @@ public class no274_h_index {
      * @param citations
      * @return
      */
-    public int hIndex(int[] citations) {
+    public int hIndex_method(int[] citations) {
         if (citations == null || citations.length == 0) return 0;
 
         Arrays.sort(citations);
@@ -44,6 +44,27 @@ public class no274_h_index {
         return Math.min(pre, index);
     }
 
+    /**
+     * 计数法
+     * https://leetcode-cn.com/problems/h-index/solution/hzhi-shu-by-leetcode/
+     * @param citations
+     * @return
+     */
+    public int hIndex(int[] citations) {
+        if (citations == null || citations.length == 0) return 0;
+
+        int len = citations.length;
+        int[] array = new int[len + 1];
+        for (int iter : citations) {
+            array[Math.min(iter, len)]++;
+        }
+        int k = len;
+        for (int s = array[len]; k > s; s += array[k]) {
+            k--;
+        }
+
+        return k;
+    }
     public static void main(String args[]) {
         no274_h_index obj = new no274_h_index();
         int result = obj.hIndex(new int[]{3, 0, 6, 1, 5});
