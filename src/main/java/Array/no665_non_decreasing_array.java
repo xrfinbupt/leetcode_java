@@ -39,20 +39,23 @@ public class no665_non_decreasing_array {
         boolean flag = false;
         int len = nums.length;
         for (int i = 1; i < len; i++) {
-            int val = nums[i];
+            int currVal = nums[i];
             int pre = nums[i - 1];
-            if (val < pre) {
-                int next = val;
+            if (currVal < pre) {
+
+                int next = currVal;
                 if (i + 1 < len) {
                     next = nums[i + 1];
                 } else {
-                    val = Integer.MAX_VALUE;
+                    currVal = Integer.MAX_VALUE;
                 }
+
+
                 if (next >= pre) {
                     nums[i] = next;
                 } else {
-                    nums[i - 1] = val;
-                    if (i - 2 >= 0 && nums[i - 2] > val) {
+                    nums[i - 1] = currVal;
+                    if (i - 2 >= 0 && nums[i - 2] > currVal) {
                         return false;
                     }
                 }
