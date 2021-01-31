@@ -1,4 +1,4 @@
-package high_frequency.easy;
+package Array;
 
 /**
  * https://github.com/azl397985856/leetcode/blob/master/problems/88.merge-sorted-array.md
