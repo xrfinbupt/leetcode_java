@@ -32,5 +32,5 @@ About me
 > 从事Java后端开发，工作了七年的loser。看了[《资深技术Leader曹乐：如何成为技术大牛》](https://mp.weixin.qq.com/s/PpesrPQ6y0s1gtLOC3jeAQ) 这篇文章后 ，决心努力提高自己的代码能力和解决问题能力。
 >
 > 个人订阅号:熵增与求索之路 (关于成长，关于认知)
->![关于成长，关于认知](https://static01.imgkr.com/temp/6b84a41bd5e54585876f33e9baffc7b7.jpg =50%x)
+>![关于成长，关于认知](https://static01.imgkr.com/temp/6b84a41bd5e54585876f33e9baffc7b7.jpg)
 >
