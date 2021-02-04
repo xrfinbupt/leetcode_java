@@ -8,6 +8,10 @@ my leetcode java code
 https://leetcode-cn.com/circle/article/48kq9d/
 https://leetcode-cn.com/tag/array/
 
+接下来进行数组总结：（参考如下2篇文章）ing
+https://www.cnblogs.com/liuzhen1995/p/11789339.html
+https://blog.csdn.net/shulixu/article/details/90477714
+
 参考如下两个项目
 https://github.com/azl397985856/leetcode
 https://github.com/labuladong/fucking-algorithm
@@ -26,3 +30,7 @@ https://v2ex.com/t/723418#reply10  说几个leetcode 上看似简单却又非常
 
 About me
 > 从事Java后端开发，工作了七年的loser。看了[《资深技术Leader曹乐：如何成为技术大牛》](https://mp.weixin.qq.com/s/PpesrPQ6y0s1gtLOC3jeAQ) 这篇文章后 ，决心努力提高自己的代码能力和解决问题能力。
+>
+> 个人订阅号:熵增与求索之路 (关于成长，关于认知)
+>![关于成长，关于认知](https://static01.imgkr.com/temp/6b84a41bd5e54585876f33e9baffc7b7.jpg =50%x)
+>
