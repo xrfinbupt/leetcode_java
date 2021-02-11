@@ -29,7 +29,7 @@ import java.util.Map;
  *
  * https://leetcode-cn.com/problems/two-sum
  */
-public class no5_two_sum {
+public class no1_two_sum {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         int len = nums.length;
