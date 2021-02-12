@@ -22,21 +22,51 @@ package Array;
  * https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted
  */
 public class no167_two_sum_ii_input_array_is_sorted {
+    /**
+     * 双指针方法
+     * @param numbers
+     * @param target
+     * @return
+     */
     public int[] twoSum(int[] numbers, int target) {
         if(numbers == null || numbers.length < 2) return null;
-        int[] result = new int[2];
-
         int l=0,r=numbers.length-1;
         while(l<r){
             int sum = numbers[l] + numbers[r];
             if(sum == target){
-                result[0] = l+1;
-                result[1] = r+1;
-                return result;
+                return new int[]{l+1,r+1};
             }else if(sum > target){
                 r--;
             }else{
                 l++;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 双指针+二分查找
+     * @param numbers
+     * @param target
+     * @return
+     */
+    public int[] twoSum_1(int[] numbers, int target) {
+        if(numbers == null || numbers.length < 2) return null;
+
+        int l=0,r=numbers.length-1;
+        while(l<r){
+            int mid = l + (r-l)/2;
+            // 这个地方 mid 可能等于l
+            if(numbers[l]+numbers[mid]>target){
+                r = mid -1;
+            }else if(numbers[mid]+numbers[r]<target){
+                l = mid+1;
+            }else if(numbers[l]+numbers[r]>target){
+                r--;
+            }else if(numbers[l]+numbers[r]<target){
+                l++;
+            }else{
+                return new int[]{l+1,r+1};
             }
         }
         return null;
