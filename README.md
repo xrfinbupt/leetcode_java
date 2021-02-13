@@ -3,10 +3,10 @@ my leetcode java code
 
 #### Objective: To improve code ability and thinking ability
 #### 目标:提升代码能力 思维能力(认认真真刷题 精刷300题 按照tag刷)
+在V2EX里面看到一个40多岁的Leader（P8级别）每天也在刷几道题，给我信心做这个事情（前提是有时间和精力 有兴趣）
 ```
 按照这个tag顺序刷题，并尽可能想到、写出所有方法
-https://leetcode-cn.com/circle/article/48kq9d/
-https://leetcode-cn.com/tag/array/
+随便网上搜都能找到很多按照tag的总结
 
 接下来进行数组总结：（参考如下2篇文章）ing
 https://www.cnblogs.com/liuzhen1995/p/11789339.html
