@@ -5,16 +5,8 @@ my leetcode java code
 #### 目标:提升代码能力 思维能力(认认真真刷题 精刷300题 按照tag刷)
 在V2EX里面看到一个40多岁的Leader（P8级别）每天也在刷几道题，给我信心做这个事情（前提是有时间和精力 有兴趣）
 ```
-按照这个tag顺序刷题，并尽可能想到、写出所有方法
+按照tag顺序刷题，并尽可能想到、写出所有方法
 随便网上搜都能找到很多按照tag的总结
-
-接下来进行数组总结：（参考如下2篇文章）ing
-https://www.cnblogs.com/liuzhen1995/p/11789339.html
-https://blog.csdn.net/shulixu/article/details/90477714
-
-参考如下两个项目
-https://github.com/azl397985856/leetcode
-https://github.com/labuladong/fucking-algorithm
 ```
 
 说明：
@@ -26,6 +18,7 @@ https://v2ex.com/t/723418#reply10  说几个leetcode 上看似简单却又非常
 
 2021年1月10日有感：刷题过程很痛苦 需要自己不断找方法 刺激这个过程 别放弃
 2021年1月11日有感：按照tag刷题 分类刷 方便总结规律
+2021年2月13日有感：一定要用笔进行画画和分析 便于高效解决问题 （no16_3sum_closest）
 ```
 
 About me
