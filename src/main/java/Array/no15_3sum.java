@@ -2,6 +2,8 @@ package Array;
 
 import java.util.*;
 
+import static Array.no18_4sum.nSum;
+
 /**
  * 给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。
  * 注意：答案中不可以包含重复的三元组。
@@ -162,21 +164,30 @@ public class no15_3sum {
         }
         return res;
     }
+    public List<List<Integer>> threeSumN(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (nums == null || nums.length < 3) return result;
+
+        Arrays.sort(nums);
+        result = nSum(nums,3,0,0);
+
+        return result;
+    }
 
     public static void main(String args[]) {
         no15_3sum obj = new no15_3sum();
         int[] nums = new int[]{-1, 0, 1, 2, -1, -4};
-        List<List<Integer>> result = obj.threeSum2(nums);
+        List<List<Integer>> result = obj.threeSumN(nums);
         System.out.println(result);
         System.out.println("---------");
 
         nums = new int[]{-2, 0, 0, 2, 2};
-        result = obj.threeSum2(nums);
+        result = obj.threeSumN(nums);
         System.out.println(result);
         System.out.println("---------");
 
         nums = new int[]{-2, 0, 1, 1, 2};
-        result = obj.threeSum2(nums);
+        result = obj.threeSumN(nums);
         System.out.println(result);
         System.out.println("---------");
     }

@@ -37,19 +37,19 @@ public class no18_4sum {
         Arrays.sort(nums);
 
         int len = nums.length;
-        if(nums[0]+nums[1]+nums[2]+nums[3] > target) return result;
-        if(nums[len-4]+nums[len-3]+nums[len-2]+nums[len-1]<target) return result;
+        if (nums[0] + nums[1] + nums[2] + nums[3] > target) return result;
+        if (nums[len - 4] + nums[len - 3] + nums[len - 2] + nums[len - 1] < target) return result;
 
-        for (int i = 0; i < len-3; i++) {
+        for (int i = 0; i < len - 3; i++) {
             if (i > 0 && nums[i] == nums[i - 1]) continue;
-            if(nums[i] + nums[i+1] + nums[i+2] + nums[i+3]>target) break;
-            if(nums[i] + nums[len-3] + nums[len-2] + nums[len-1]<target) continue;
+            if (nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3] > target) break;
+            if (nums[i] + nums[len - 3] + nums[len - 2] + nums[len - 1] < target) continue;
 
 
-            for (int ii = i+1; ii < len-2; ii++) {
-                if (ii > i+1 && nums[ii] == nums[ii - 1]) continue;
-                if(nums[i] + nums[ii] + nums[ii+1] + nums[ii+2]>target) break;
-                if(nums[i] + nums[ii] + nums[len-2] + nums[len-1]<target) continue;
+            for (int ii = i + 1; ii < len - 2; ii++) {
+                if (ii > i + 1 && nums[ii] == nums[ii - 1]) continue;
+                if (nums[i] + nums[ii] + nums[ii + 1] + nums[ii + 2] > target) break;
+                if (nums[i] + nums[ii] + nums[len - 2] + nums[len - 1] < target) continue;
 
 
                 int j = ii + 1;
@@ -72,11 +72,11 @@ public class no18_4sum {
                         j++;
                         k--;
                     } else if (val - target > 0) {
-                        if(j+1 <= k && nums[i] + nums[ii] + nums[j] + nums[j+1]>target) break;
+                        if (j + 1 <= k && nums[i] + nums[ii] + nums[j] + nums[j + 1] > target) break;
 
                         k--;
-                    } else if (val-target < 0) {
-                        if(j <= k-1 && nums[i] + nums[ii] + nums[k-1] + nums[k]<target) break;
+                    } else if (val - target < 0) {
+                        if (j <= k - 1 && nums[i] + nums[ii] + nums[k - 1] + nums[k] < target) break;
 
                         j++;
                     }
@@ -86,10 +86,78 @@ public class no18_4sum {
 
         return result;
     }
+
+    /**
+     * 更加通用的方法：n数之和 （前面已经计算了2数之和，3数之和，4数之和）
+     *
+     * 参考：https://leetcode-cn.com/problems/3sum/solution/yi-ge-fang-fa-tuan-mie-by-labuladong/
+     *
+     * @param nums
+     * @param n
+     * @param start
+     * @param target
+     */
+    public static List<List<Integer>> nSum(int[] nums,int n, int start,int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        if(nums==null || n < 2 || nums.length < n) return result;
+
+        int len = nums.length;
+        if(n == 2){
+            int l = start,r=len-1;
+            while(l < r){
+                int val = nums[l] + nums[r];
+                if(val == target){
+                    List<Integer> tempResult = new ArrayList<>();
+                    tempResult.add(nums[l]);
+                    tempResult.add(nums[r]);
+                    result.add(tempResult);
+                    while(l+1<=r && nums[l] == nums[l+1]) l++;
+                    while(l<=r-1 && nums[r] == nums[r-1]) r--;
+                    l++;
+                    r--;
+                }else if(val > target){
+                    r--;
+                }else if(val < target){
+                    l++;
+                }
+            }
+        }else{
+            for(int i=start;i<=len-n;i++){
+                if(i>start && nums[i] == nums[i-1]) continue;
+
+                List<List<Integer>> tempResult = nSum(nums,n-1,i+1,target - nums[i]);
+                if(tempResult.size()>0) {
+                    for (List<Integer> iter : tempResult) {
+                        iter.add(nums[i]);
+                        result.add(iter);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+    public List<List<Integer>> fourSumN(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (nums == null || nums.length < 4) return result;
+
+        Arrays.sort(nums);
+        result = nSum(nums,4,0,target);
+
+        return result;
+    }
     public static void main(String args[]){
         no18_4sum obj = new no18_4sum();
         int[] nums = new int[]{1, 0, -1, 0, -2, 2};
-        List<List<Integer>> result = obj.fourSum(nums,0);
+        List<List<Integer>> result = obj.fourSum(nums, 0);
+        System.out.println(result);
+        System.out.println("---------");
+
+        result = obj.fourSumN(nums,0);
+        System.out.println(result);
+        System.out.println("---------");
+
+        nums = new int[]{1,-2,-5,-4,-3,3,3,5};
+        result = obj.fourSumN(nums,-11);
         System.out.println(result);
         System.out.println("---------");
     }
