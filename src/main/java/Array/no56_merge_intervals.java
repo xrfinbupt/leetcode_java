@@ -1,6 +1,9 @@
 package Array;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * 以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。请你合并所有重叠的区间，并返回一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间。
@@ -29,7 +32,7 @@ public class no56_merge_intervals {
      * @param intervals
      * @return
      */
-    public int[][] merge(int[][] intervals) {
+    public int[][] merge1(int[][] intervals) {
         int len = 0;
         for (int[] iter : intervals) {
             len = Math.max(len,iter[1]);
@@ -81,6 +84,36 @@ public class no56_merge_intervals {
         }
 
         return result;
+    }
+
+    /**
+     * 参考官网解法
+     * @param intervals
+     * @return
+     */
+    public int[][] merge(int[][] intervals) {
+        Arrays.sort(intervals, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[0] - o2[0];
+            }
+        });
+
+        List<int[]> mergeList = new ArrayList<>();
+        for(int[] iter:intervals){
+            int l = iter[0];
+            int r = iter[1];
+            int max = 0;
+            if(mergeList.size()>0) max = mergeList.get(mergeList.size() - 1)[1];
+
+            if(mergeList.size() == 0 || max < l){
+                mergeList.add(new int[]{l,r});
+            }else{
+                mergeList.get(mergeList.size() -1)[1] = Math.max(max,r);
+            }
+        }
+
+        return mergeList.toArray(new int[mergeList.size()][]);
     }
 
     public static void main(String args[]) {
