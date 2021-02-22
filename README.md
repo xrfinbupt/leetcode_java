@@ -7,7 +7,9 @@ my leetcode java code
 ```
 按照tag顺序刷题，并尽可能想到、写出所有方法
 随便网上搜都能找到很多按照tag的总结
-参考：https://github.com/huxiaoman7/leetcodebook
+参考：
+https://github.com/huxiaoman7/leetcodebook
+https://github.com/billryan/algorithm-exercise
 ```
 
 说明：
