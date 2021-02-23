@@ -23,9 +23,15 @@ import java.util.List;
  * 链接：https://leetcode-cn.com/problems/subsets
  */
 public class no78_subsets {
+    private List<Integer> temp = new ArrayList<>();
     private List<List<Integer>> result = new ArrayList<>();
 
-    public List<List<Integer>> subsets(int[] nums) {
+    /**
+     * 方法1
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> subsets1(int[] nums) {
         int len = nums.length;
         List<Integer> data = new ArrayList<>();
         recursive(nums,0,len,data);
@@ -43,6 +49,28 @@ public class no78_subsets {
 
         data.add(nums[start]);
         recursive(nums, start + 1, len, data);
+    }
+
+    /**
+     * 方法2
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> subsets(int[] nums) {
+        int len = nums.length;
+        dfs(nums,0,len);
+        return result;
+    }
+    private void dfs(int[] nums,int level,int len){
+        if(level == len){
+            result.add(new ArrayList<>(temp));
+            return;
+        }
+        temp.add(nums[level]);
+        dfs(nums,level+1,len);
+
+        temp.remove(temp.size()-1);
+        dfs(nums,level+1,len);
     }
     public static void main(String args[]) {
         no78_subsets obj = new no78_subsets();
