@@ -56,7 +56,7 @@ public class no78_subsets {
      * @param nums
      * @return
      */
-    public List<List<Integer>> subsets(int[] nums) {
+    public List<List<Integer>> subsets2(int[] nums) {
         int len = nums.length;
         dfs(nums,0,len);
         return result;
@@ -72,9 +72,41 @@ public class no78_subsets {
         temp.remove(temp.size()-1);
         dfs(nums,level+1,len);
     }
+
+    /**
+     * 方法3 迭代法实现子集枚举 参考官方解答
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> subsets(int[] nums) {
+        int len = nums.length;
+        int count = 1 << len;
+        int mask = count -1;
+        List<Integer> temp = new ArrayList<>();
+        for(int i=0;i<count;i++){
+            if(i==0){
+                result.add(new ArrayList<>());
+            }else{
+                int val = i;
+                for(int j=0;j<len;j++){
+                    if((val & (1<<j)) > 0){
+                        temp.add(nums[j]);
+                        val = val - (1<<j);
+                    }
+                    if((val & mask)==0){
+                        result.add(new ArrayList<>(temp));
+                        temp.clear();
+                        break;
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
     public static void main(String args[]) {
         no78_subsets obj = new no78_subsets();
-        int data[] = new int[]{1, 2,3};
+        int data[] = new int[]{1,2,3,4};
         List<List<Integer>> result = obj.subsets(data);
         System.out.println(result);
         System.out.println("-----------");
