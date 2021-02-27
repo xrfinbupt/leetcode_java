@@ -44,15 +44,16 @@ public class no78_subsets {
             result.add(new ArrayList<>(data));
             return;
         }
-        List<Integer> data1 = new ArrayList<>(data);
-        recursive(nums, start + 1, len, data1);
 
         data.add(nums[start]);
+        recursive(nums, start + 1, len, data);
+
+        data.remove(data.size()-1);
         recursive(nums, start + 1, len, data);
     }
 
     /**
-     * 方法2
+     * 方法2 回溯法 画图后很清晰temp空间如何利用的
      * @param nums
      * @return
      */
@@ -80,7 +81,7 @@ public class no78_subsets {
      */
     public List<List<Integer>> subsets(int[] nums) {
         int len = nums.length;
-        int count = 1 << len;
+        int count = 1 << len;//len位，二进制组合个数
         int mask = count -1;
         List<Integer> temp = new ArrayList<>();
         for(int i=0;i<count;i++){
@@ -107,7 +108,7 @@ public class no78_subsets {
     public static void main(String args[]) {
         no78_subsets obj = new no78_subsets();
         int data[] = new int[]{1,2,3,4};
-        List<List<Integer>> result = obj.subsets(data);
+        List<List<Integer>> result = obj.subsets1(data);
         System.out.println(result);
         System.out.println("-----------");
     }

@@ -13,9 +13,9 @@ package Array;
  *
  * https://leetcode-cn.com/problems/maximum-subarray
  */
-public class no9_maximum_subarray {
+public class no53_maximum_subarray {
 
-    /**
+    /**nm
      * 方法1 暴力法+剪枝法
      * 时间复杂度 o(n^2)
      */
