@@ -1,4 +1,4 @@
-package high_frequency.easy;
+package Tree;
 
 import common.TreeNode;
 
@@ -26,7 +26,7 @@ import java.util.Queue;
  * <p>
  * 链接：https://leetcode-cn.com/problems/invert-binary-tree
  */
-public class no13_invert_binary_tree {
+public class no226_invert_binary_tree {
     /**
      * 方法1 递归
      *

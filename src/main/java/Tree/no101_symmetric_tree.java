@@ -1,4 +1,4 @@
-package high_frequency.easy;
+package Tree;
 
 import common.TreeNode;
 
@@ -31,7 +31,7 @@ import java.util.Queue;
  * 1 递归（copy一个镜像的Tree 然后遍历一遍 看是否一样）
  * 2 非递归(层序遍历 然后每一层元素 查看是否满足镜像)
  */
-public class no12_symmetric_tree {
+public class no101_symmetric_tree {
     /**
      * 方法1 递归
      *

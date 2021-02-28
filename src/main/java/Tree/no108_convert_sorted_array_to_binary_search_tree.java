@@ -1,4 +1,4 @@
-package high_frequency.easy;
+package Tree;
 
 import common.TreeNode;
 
@@ -24,7 +24,7 @@ import java.util.Queue;
  *    /   /
  *  -10  5
  */
-public class no16_convert_sorted_array_to_binary_search_tree {
+public class no108_convert_sorted_array_to_binary_search_tree {
     /**
      * 我自己想到的一种方法
      * @param nums

@@ -1,4 +1,4 @@
-package high_frequency.easy;
+package Tree;
 
 import common.TreeNode;
 
@@ -26,7 +26,7 @@ import java.util.Queue;
  *    15   7
  * 返回它的最大深度 3
  */
-public class no15_maximum_depth_of_binary_tree {
+public class no104_maximum_depth_of_binary_tree {
     private int maxDeep = 0;
 
     /**

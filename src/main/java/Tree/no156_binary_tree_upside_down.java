@@ -1,4 +1,4 @@
-package high_frequency.easy;
+package Tree;
 
 import common.TreeNode;
 
@@ -47,8 +47,9 @@ import java.util.Queue;
  *    3   1
  *
  * https://www.lintcode.com/problem/binary-tree-upside-down/description
+ * https://leetcode-cn.com/problems/binary-tree-upside-down/
  */
-public class no14_binary_tree_upside_down {
+public class no156_binary_tree_upside_down {
 
     /**
      * 方法1 迭代

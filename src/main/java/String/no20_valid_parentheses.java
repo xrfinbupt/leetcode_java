@@ -1,9 +1,9 @@
-package high_frequency.easy;
+package String;
 
 import java.util.LinkedList;
 
 // https://leetcode-cn.com/problems/valid-parentheses/description
-public class no6_valid_parentheses {
+public class no20_valid_parentheses {
     public boolean isValid(String s) {
         LinkedList stack = new LinkedList<Character>();
 

@@ -1,4 +1,4 @@
-package high_frequency.easy;
+package Tree;
 
 import com.alibaba.fastjson.JSON;
 import common.TreeNode;

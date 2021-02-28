@@ -1,20 +1,21 @@
-package high_frequency.easy;
+package Stack;
 
 import java.util.LinkedList;
-import java.util.Queue;
 
 /**
+ * 155. 最小栈
+ *
  * https://leetcode-cn.com/problems/min-stack/
  * https://github.com/azl397985856/leetcode/blob/master/problems/155.min-stack.md
  */
-public class no21_min_stack {
+public class no155_min_stack {
     private LinkedList<Integer> queue;
     private LinkedList<Integer> minQueue;
 
     /**
      * initialize your data structure here.
      */
-    public no21_min_stack() {
+    public no155_min_stack() {
         queue = new LinkedList<>();
         minQueue = new LinkedList<>();
     }
@@ -46,7 +47,7 @@ public class no21_min_stack {
     }
 
     public static void main(String args[]) {
-        no21_min_stack obj = new no21_min_stack();
+        no155_min_stack obj = new no155_min_stack();
         obj.push(-2);
         obj.push(0);
         obj.push(-3);

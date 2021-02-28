@@ -1,9 +1,9 @@
-package high_frequency.easy;
+package List;
 
 import common.ListNode;
 
 // https://github.com/azl397985856/leetcode/blob/master/problems/25.reverse-nodes-in-k-groups.md
-public class no4_reverse_nodes_in_k_group {
+public class no25_reverse_nodes_in_k_group {
 
     public ListNode reverseKGroup(ListNode head, int k) {
         if (head == null || head.next == null || k <= 1) return head;
@@ -59,7 +59,7 @@ public class no4_reverse_nodes_in_k_group {
     }
 
     public static void main(String args[]) {
-        no4_reverse_nodes_in_k_group obj = new no4_reverse_nodes_in_k_group();
+        no25_reverse_nodes_in_k_group obj = new no25_reverse_nodes_in_k_group();
         ListNode root = new ListNode(1);
         ListNode p = root;
         p.next = new ListNode(2);

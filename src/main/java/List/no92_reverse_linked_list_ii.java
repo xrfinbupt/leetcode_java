@@ -1,10 +1,10 @@
-package high_frequency.easy;
+package List;
 
 import common.ListNode;
 
 // https://leetcode-cn.com/problems/reverse-linked-list-ii/
 // https://github.com/azl397985856/leetcode/blob/master/problems/92.reverse-linked-list-ii.md
-public class no3_reverse_linked_list_ii {
+public class no92_reverse_linked_list_ii {
 
     // m = 1             n < len or n = len
     // m > 1 and m < n   n < len or n = len
@@ -61,7 +61,7 @@ public class no3_reverse_linked_list_ii {
     }
 
     public static void main(String args[]) {
-        no3_reverse_linked_list_ii obj = new no3_reverse_linked_list_ii();
+        no92_reverse_linked_list_ii obj = new no92_reverse_linked_list_ii();
         ListNode root = new ListNode(1);
         ListNode p = root;
         p.next = new ListNode(2);

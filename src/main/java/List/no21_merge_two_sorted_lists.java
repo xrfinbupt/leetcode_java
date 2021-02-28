@@ -1,9 +1,9 @@
-package high_frequency.easy;
+package List;
 
 import common.ListNode;
 
 // https://leetcode-cn.com/problems/merge-two-sorted-lists
-public class no7_merge_two_sorted_lists {
+public class no21_merge_two_sorted_lists {
 
     // 新链表是通过拼接给定的两个链表的所有节点组成的
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
@@ -50,7 +50,7 @@ public class no7_merge_two_sorted_lists {
     }
 
     public static void main(String args[]) {
-        no7_merge_two_sorted_lists obj = new no7_merge_two_sorted_lists();
+        no21_merge_two_sorted_lists obj = new no21_merge_two_sorted_lists();
         ListNode root1 = new ListNode(1);
         ListNode p = root1;
         p.next = new ListNode(2);
