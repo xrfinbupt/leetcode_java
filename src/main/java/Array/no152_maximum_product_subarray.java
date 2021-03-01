@@ -25,25 +25,40 @@ public class no152_maximum_product_subarray {
      * @param nums
      * @return
      */
-    public int maxProduct(int[] nums) {
+    public int maxProduct1(int[] nums) {
         int max = nums[0];
         int result = max;
         int min = max;
         int len = nums.length;
         for (int i = 1; i < len; i++) {
-            if(nums[i] == 0){
-                max = 0;
-                min = 0;
-                if(max> result) result = max;
-                continue;
-            }
-
             int preMax = max;
             max = Math.max(nums[i], Math.max(preMax*nums[i],min*nums[i]));
             if(max> result) result = max;
             min = Math.min(nums[i], Math.min(preMax*nums[i],min*nums[i]));
         }
         return result;
+    }
+
+    /**
+     * 前后遍历一遍 遇到0就重新开始
+     * 参考网上解答
+     * @param nums
+     * @return
+     */
+    public int maxProduct(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        int product = 1;
+        int len = nums.length;
+        for (int i = 0; i < len; i++) {
+            product = product == 0 ? nums[i] : product * nums[i];
+            max = Math.max(max, product);
+        }
+        product = 1;
+        for (int i = len - 1; i >= 0; i--) {
+            product = product == 0 ? nums[i] : product * nums[i];
+            max = Math.max(max, product);
+        }
+        return max;
     }
     public static void main(String args[]) {
         no152_maximum_product_subarray obj = new no152_maximum_product_subarray();
