@@ -1,5 +1,7 @@
 package Array;
 
+import java.util.List;
+
 /**
  * 152. 乘积最大子数组
  * 给你一个整数数组 nums ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。
@@ -18,7 +20,66 @@ package Array;
  *
  */
 public class no152_maximum_product_subarray {
+    /**
+     * 动态规划 参考 53. 最大子序和
+     * @param nums
+     * @return
+     */
     public int maxProduct(int[] nums) {
-        return 0;
+        int max = nums[0];
+        int result = max;
+        int min = max;
+        int len = nums.length;
+        for (int i = 1; i < len; i++) {
+            if(nums[i] == 0){
+                max = 0;
+                min = 0;
+                if(max> result) result = max;
+                continue;
+            }
+
+            int preMax = max;
+            max = Math.max(nums[i], Math.max(preMax*nums[i],min*nums[i]));
+            if(max> result) result = max;
+            min = Math.min(nums[i], Math.min(preMax*nums[i],min*nums[i]));
+        }
+        return result;
+    }
+    public static void main(String args[]) {
+        no152_maximum_product_subarray obj = new no152_maximum_product_subarray();
+        int data[] = new int[]{2,3,-2,4};
+        int result = obj.maxProduct(data);
+        System.out.println("2,3,-2,4 result:" + result);
+        System.out.println("-----------");
+
+        data = new int[]{-2,3,-2,4};
+        result = obj.maxProduct(data);
+        System.out.println("-2,3,-2,4 result:" + result);
+        System.out.println("-----------");
+
+        data = new int[]{-2,3,2,4};
+        result = obj.maxProduct(data);
+        System.out.println("-2,3,2,4 result:" + result);
+        System.out.println("-----------");
+
+        data = new int[]{-2,0,-1};
+        result = obj.maxProduct(data);
+        System.out.println("-2,0,-1 result:" + result);
+        System.out.println("-----------");
+
+        data = new int[]{-2,0};
+        result = obj.maxProduct(data);
+        System.out.println("-2,0 result:" + result);
+        System.out.println("-----------");
+
+        data = new int[]{-4,-3,-2};
+        result = obj.maxProduct(data);
+        System.out.println("-4,-3,-2 result:" + result);
+        System.out.println("-----------");
+
+        data= new int[]{2,-5,-2,-4,3};
+        result = obj.maxProduct(data);
+        System.out.println("2,-5,-2,-4,3 result:" + result);
+        System.out.println("-----------");
     }
 }
