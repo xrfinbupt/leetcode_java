@@ -1,7 +1,6 @@
 package Array;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * 239. 滑动窗口最大值
@@ -110,7 +109,7 @@ public class no239_sliding_window_maximum {
      * @param k
      * @return
      */
-    public int[] maxSlidingWindow(int[] nums, int k) {
+    public int[] maxSlidingWindow2(int[] nums, int k) {
         int[] ans = new int[nums.length - k +1];
         int index = 0;
         PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>() {
@@ -131,6 +130,95 @@ public class no239_sliding_window_maximum {
             ans[index++] = pq.peek()[0];
         }
 
+        return ans;
+    }
+
+    /**
+     * 方法3：双端队列
+     * @param nums
+     * @param k
+     * @return
+     */
+    public int[] maxSlidingWindow3(int[] nums, int k) {
+        int[] ans = new int[nums.length - k +1];
+        int index = 0;
+        Deque<Integer> queue = new LinkedList<>();
+        for(int i=0;i<k;i++){
+            while(!queue.isEmpty() && nums[i] > nums[queue.peekLast()])
+                queue.pollLast();
+            queue.offerLast(i);
+        }
+
+        ans[index++] = nums[queue.peekFirst()];
+        for(int i=k;i<nums.length;i++){
+            while(!queue.isEmpty() && nums[i] > nums[queue.peekLast()])
+                queue.pollLast();
+
+            queue.offerLast(i);
+            while(i-k >= queue.peekFirst())
+                queue.pollFirst();
+
+            ans[index++] = nums[queue.peekFirst()];
+        }
+
+        return ans;
+    }
+
+    /**
+     * 方法4：和双端队列类似 只不过用数组替换双端队列 思想都是一样
+     * 执行用时：16 ms, 在所有 Java 提交中击败了 93.46% 的用户
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int temp[] = new int[k];
+        int ans[] = new int[nums.length - k + 1];
+        int start = 0, end = 0, size = 1;
+        temp[0] = 0;
+        for (int i = 1; i < k; i++) {
+            while (size > 0 && nums[i] > nums[temp[end]]) {
+                end--;
+                size--;
+            }
+            temp[++end] = i;
+            size++;
+        }
+        int index = 0;
+        ans[index++] = nums[temp[start]];
+
+        for (int i = k; i < nums.length; i++) {
+            while (size > 0 && nums[i] > nums[temp[end]]) {
+                end--;
+                size--;
+                if (end < 0) end += k;
+            }
+            if (size == 0) {
+                start = 0;
+                end = -1;
+            }
+
+            if (k == 1 || size < k) {
+                end += 1;
+                end = end % k;
+                temp[end] = i;
+                size++;
+            } else if (size == k) {
+                start++;
+                start = start % k;
+                end += 1;
+                end = end % k;
+                temp[end] = i;
+            }
+
+            while (size > 0 && i - k >= temp[start]) {
+                start++;
+                size--;
+                start = start % k;
+            }
+            ans[index++] = nums[temp[start]];
+        }
         return ans;
     }
     public static void main(String args[]) {
@@ -206,5 +294,22 @@ public class no239_sliding_window_maximum {
             System.out.print(iter + " ");
         }
         System.out.println("-----------");
+
+        data = new int[]{-9361,-750,-8435,-5590,-5835,2958,-3942,-8209,-8241};
+        result = obj.maxSlidingWindow(data,3);
+        System.out.print("array(-9361,-750,-8435,-5590,-5835,2958,-3942,-8209,-8241) k=3:");
+        for(int iter:result) {
+            System.out.print(iter + " ");
+        }
+        System.out.println("-----------");
+        for (int i = 0; i < 1000; i++) {
+            List<Integer> input = new ArrayList<>();
+            for (int j = 100; j < 110; j++) {
+                input.add((int) Math.random() * j);
+            }
+            int ans[] = input.stream().mapToInt(Integer::intValue).toArray();
+            obj.maxSlidingWindow(ans,Math.max((int)Math.random()*10,3));
+            System.out.println(i);
+        }
     }
 }
