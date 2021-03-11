@@ -38,12 +38,54 @@ package Array;
  */
 public class no4_median_of_two_sorted_arrays {
     /**
-     * 官方解答真简洁
+     * 二分法 参考官网
      * @param nums1
      * @param nums2
      * @return
      */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int m = nums1.length;
+        int n = nums2.length;
+        int k = (m + n) / 2;
+        if ((m + n) % 2 == 1) {
+            return findKthArray(nums1, nums2, k + 1);
+        } else {
+            return (findKthArray(nums1, nums2, k) + findKthArray(nums1, nums2, k + 1)) / 2.0;
+        }
+    }
+
+    private int findKthArray(int nums1[], int nums2[], int k) {
+        int index1 = 0, index2 = 0;
+        while (true) {
+            if (index1 == nums1.length) {
+                return nums2[index2 + k - 1];
+            }
+            if (index2 == nums2.length) {
+                return nums1[index1 + k - 1];
+            }
+            if (k == 1) {
+                return Math.min(nums1[index1 + k - 1], nums2[index2 + k - 1]);
+            }
+            int half = k / 2;
+            int index11 = Math.min(index1 + half, nums1.length) - 1;
+            int index22 = Math.min(index2 + half, nums2.length) - 1;
+            if (nums1[index11] <= nums2[index22]) {
+                k = k - (index11 - index1 + 1);
+                index1 = index11 + 1;
+
+            } else {
+                k = k - (index22 - index2 + 1);
+                index2 = index22 + 1;
+            }
+        }
+    }
+    /**
+     * 官方解答真简洁
+     * @param nums1
+     * @param nums2
+     * @return
+     */
+    public double findMedianSortedArrays1(int[] nums1, int[] nums2) {
         if(nums1.length > nums2.length){
             return findMedianSortedArrays(nums2,nums1);
         }
