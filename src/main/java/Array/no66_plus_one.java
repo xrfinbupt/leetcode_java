@@ -23,7 +23,7 @@ package Array;
  * https://github.com/azl397985856/leetcode/blob/master/problems/66.plus-one.md
  * https://leetcode-cn.com/problems/plus-one
  */
-public class no10_plus_one {
+public class no66_plus_one {
 
     /**
      *

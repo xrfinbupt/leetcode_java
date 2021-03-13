@@ -17,7 +17,7 @@ package Array;
  * <p>
  * 输出: [1,2,2,3,5,6]
  */
-public class no11_merge_sorted_array {
+public class no88_merge_sorted_array {
     /**
      * @param nums1
      * @param m
