@@ -29,7 +29,64 @@ import common.ListNode;
  * 链接：https://leetcode-cn.com/problems/add-two-numbers
  */
 public class no2_add_two_numbers {
+    /**
+     * 返回的链表直接new的，应该可以利用参数的空间
+     * @param l1
+     * @param l2
+     * @return
+     */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        return null;
+        int preFlag = 0;
+        ListNode ans = null, p = null;
+
+        ListNode p1 = l1;
+        ListNode p2 = l2;
+        while (p1 != null && p2 != null) {
+            int temp = p1.val + p2.val + preFlag;
+            if (temp > 9) {
+                preFlag = 1;
+                temp -= 10;
+            }else{
+                preFlag = 0;
+            }
+            if (ans == null) {
+                p = new ListNode(temp);
+                ans = p;
+            } else {
+                p.next = new ListNode(temp);
+                p = p.next;
+            }
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        while (p1 != null) {
+            int temp = p1.val + preFlag;
+            if (temp > 9) {
+                preFlag = 1;
+                temp -= 10;
+            }else{
+                preFlag = 0;
+            }
+            p.next = new ListNode(temp);
+            p = p.next;
+            p1 = p1.next;
+        }
+        while (p2 != null) {
+            int temp = p2.val + preFlag;
+            if (temp > 9) {
+                preFlag = 1;
+                temp -= 10;
+            }else{
+                preFlag = 0;
+            }
+            p.next = new ListNode(temp);
+            p = p.next;
+            p2 = p2.next;
+        }
+
+        if(preFlag>0){
+            p.next = new ListNode(preFlag);
+        }
+        return ans;
     }
 }
