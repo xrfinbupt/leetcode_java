@@ -91,6 +91,7 @@ public class no18_4sum {
 
     /**
      * 更加通用的方法：n数之和 （前面已经计算了2数之和，3数之和，4数之和）
+     * 分治法：复杂问题简单化
      *
      * 参考：https://leetcode-cn.com/problems/3sum/solution/yi-ge-fang-fa-tuan-mie-by-labuladong/
      *
@@ -105,6 +106,7 @@ public class no18_4sum {
 
         int len = nums.length;
         if(n == 2){
+            // 双指针
             int l = start,r=len-1;
             while(l < r){
                 int val = nums[l] + nums[r];

@@ -23,7 +23,7 @@ package Array;
  * https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/description/
  * https://github.com/azl397985856/leetcode/blob/master/problems/121.best-time-to-buy-and-sell-stock.md
  */
-public class no17_best_time_to_buy_and_sell_stock {
+public class no121_best_time_to_buy_and_sell_stock {
     public int maxProfit(int[] prices) {
         if (prices == null || prices.length == 0) return 0;
 
