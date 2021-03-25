@@ -1,5 +1,3 @@
-# leetcode_java
-my leetcode java code
 
 #### Objective: To improve code ability and thinking ability
 #### 目标:提升代码能力 思维能力(认认真真刷题 精刷300题 按照tag刷)
