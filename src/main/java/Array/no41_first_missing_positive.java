@@ -1,6 +1,8 @@
 package Array;
 
 /**
+ * 41. 缺失的第一个正数
+ *
  * 给你一个未排序的整数数组 nums ，请你找出其中没有出现的最小的正整数。
  * 进阶：你可以实现时间复杂度为 O(n) 并且只使用常数级别额外空间的解决方案吗？
  *
@@ -69,6 +71,7 @@ public class no41_first_missing_positive {
     }
 
     /**
+     * 方法 哈希表
      * 打标记
      * 比我思维想的周到 佩服
      * https://leetcode-cn.com/problems/first-missing-positive/solution/que-shi-de-di-yi-ge-zheng-shu-by-leetcode-solution/
@@ -80,12 +83,12 @@ public class no41_first_missing_positive {
         int n = nums.length;
         for (int i = 0; i < n; ++i) {
             if (nums[i] <= 0) {
-                nums[i] = n + 1;
+                nums[i] = n + 1; // 大于n的数即可
             }
         }
         for (int i = 0; i < n; ++i) {
             int num = Math.abs(nums[i]);
-            if (num <= n) {
+            if (num <= n) { // 这一步很 妙，大于n的数不管
                 nums[num - 1] = -Math.abs(nums[num - 1]);
             }
         }

@@ -47,30 +47,30 @@ public class no26_remove_duplicates_from_sorted_array {
         int orgLen = nums.length;
         int delNum = 0;
         int pre = nums[0];
-        int rl = -1;
+        int startPos = -1;
         for (int i = 1; i < orgLen - delNum; ) {
             if (nums[i] == pre) {
-                if (rl == -1) rl = i;
+                if (startPos == -1) startPos = i;
             } else {
                 // del
-                if (rl != -1) {
+                if (startPos != -1) {
                     //重新调整i
-                    int offset = i - rl;
+                    int offset = i - startPos;
                     for (int ii = i; ii < orgLen - delNum; ii++) {
                         nums[ii - offset] = nums[ii];
                     }
-                    delNum += (i - rl);
+                    delNum += (i - startPos);
 
                     i = i - offset;
                 }
                 pre = nums[i];
-                rl = -1;
+                startPos = -1;
             }
             i++;
         }
-        if (rl != -1) {
+        if (startPos != -1) {
             //重新调整i
-            int offset = orgLen - delNum - rl;
+            int offset = orgLen - delNum - startPos;
             delNum += offset;
         }
         return orgLen - delNum;
@@ -95,8 +95,26 @@ public class no26_remove_duplicates_from_sorted_array {
                 pfast++;
             } else {
                 pslow++;
-                nums[pslow] = nums[pfast];
+                if (pslow != pfast) nums[pslow] = nums[pfast];
                 pfast++;
+            }
+        }
+        return pslow + 1;
+    }
+
+    /**
+     * 同上
+     * @param nums
+     * @return
+     */
+    public int removeDuplicates3(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        int pslow = 0;
+        int len = nums.length;
+        for(int i=1;i<len;i++){
+            if(nums[i]!=nums[pslow]){
+                pslow++;
+                nums[pslow] = nums[i];
             }
         }
         return pslow + 1;

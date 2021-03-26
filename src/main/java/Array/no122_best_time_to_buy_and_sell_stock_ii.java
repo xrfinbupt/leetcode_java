@@ -27,10 +27,9 @@ package Array;
  * 1 <= prices.length <= 3 * 10 ^ 4
  * 0 <= prices[i] <= 10 ^ 4
  *
- * https://github.com/azl397985856/leetcode/blob/master/problems/122.best-time-to-buy-and-sell-stock-ii.md
  * https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/solution/mai-mai-gu-piao-de-zui-jia-shi-ji-ii-by-leetcode-s/
  */
-public class no18_best_time_to_buy_and_sell_stock_ii {
+public class no122_best_time_to_buy_and_sell_stock_ii {
     /**
      * 贪心: 贪心算法只能用于计算最大利润，计算的过程并不是实际的交易过程
      * @param prices
@@ -48,6 +47,11 @@ public class no18_best_time_to_buy_and_sell_stock_ii {
 
     /**
      * 方法：动态规划
+     *
+     * 考虑到「不能同时参与多笔交易」，因此每天交易结束后只可能存在手里有一支股票或者没有股票的状态。
+     * 定义状态：
+     * dp[i][0] 表示第 i 天交易完后手里没有股票的最大利润，
+     * dp[i][1] 表示第 i 天交易完后手里持有一支股票的最大利润（i 从 0 开始）
      *
      * @param prices
      * @return
