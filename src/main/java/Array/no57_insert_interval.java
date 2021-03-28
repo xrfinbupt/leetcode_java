@@ -3,6 +3,8 @@ package Array;
 import java.util.Arrays;
 
 /**
+ * 57. 插入区间
+ *
  * 给你一个 无重叠的 ，按照区间起始端点排序的区间列表。
  * 在列表中插入一个新的区间，你需要确保列表中的区间仍然有序且不重叠（如果有必要的话，可以合并区间）。
  *
@@ -64,16 +66,18 @@ public class no57_insert_interval {
             array[iter[0]] = iter[1];
         }
 
+        boolean flag = false;
         if (array[newInterval[0]] == -1) {
             array[newInterval[0]] = newInterval[1];
         } else {
             array[newInterval[0]] = Math.max(newInterval[1], array[newInterval[0]]);
+            flag = true;
         }
 
         // step2 处理区间重叠问题
         int count = array.length;
         int num = 0;
-        for (int i = 0; i < count; i++) {
+        for (int i = newInterval[0]; i < count; i++) {
             int val = array[i];
             if (val != -1) num++;
             else continue;
