@@ -148,7 +148,7 @@ public class no200_number_of_islands {
                                 subtract++; // 岛屿数减1
                                 for (int k = 0; k < line; k++) {
                                     // 这里k<line改成k<=i耗时反而多了1ms，i+1行后的大陆都未探索也未编号，无需遍历的，为什么不遍历耗时反而更高？
-                                    // 请问为什么？？？是系统问题吗 我的理解：刚好和测试case有关 这些没有遍历的数组值 也是陆地
+                                    // 请问为什么？？？是系统问题吗
                                     for (int l = 0; l < column; l++) {
                                         if (grid[k][l] == left) {
                                             grid[k][l] = up;

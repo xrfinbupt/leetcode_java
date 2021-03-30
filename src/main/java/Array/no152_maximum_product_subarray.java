@@ -22,6 +22,8 @@ import java.util.List;
 public class no152_maximum_product_subarray {
     /**
      * 动态规划 参考 53. 最大子序和
+     * https://leetcode-cn.com/problems/maximum-product-subarray/solution/cheng-ji-zui-da-zi-shu-zu-by-leetcode-solution/
+     *
      * @param nums
      * @return
      */
