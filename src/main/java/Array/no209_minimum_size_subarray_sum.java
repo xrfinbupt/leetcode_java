@@ -90,17 +90,20 @@ public class no209_minimum_size_subarray_sum {
 
     /**
      * 方法二：前缀和 + 二分查找
-     * 前缀后这个是关键 sums[i] 表示从nums[0] 到 nums[i−1] 的元素和
+     * 前缀和这个是关键，sums[i]表示从nums[0] 到 nums[i−1] 的元素和
      */
     public int minSubArrayLen2(int target, int[] nums) {
         int len = nums.length;
         int result = Integer.MAX_VALUE;
+        // 前缀和 数组就变成了有序数组了
         int sum[] = new int[len + 1];
         for (int i = 1; i <= len; i++) {
             sum[i] = sum[i - 1] + nums[i - 1];
         }
         for (int i = 0; i < len; i++) {
             int target2 = target + sum[i];
+            // index of the search key, if it is contained in the array; otherwise, (-(insertion point) - 1).
+            // The insertion point is defined as the point at which the key would be inserted into the array: the index of the first element greater than the key, or a.length if all elements in the array are less than the specified key. Note that this guarantees that the return value will be >= 0 if and only if the key is found.
             int pos = Arrays.binarySearch(sum, target2);
             if (pos < 0) {
                 pos = 0 - pos - 1;

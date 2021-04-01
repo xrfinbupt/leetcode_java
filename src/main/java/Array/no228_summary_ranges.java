@@ -50,7 +50,8 @@ import java.util.List;
  */
 public class no228_summary_ranges {
     /**
-     * 想复杂了 有序的数组 且 不重复
+     * 双指针
+     * 条件：有序的数组 且 不重复
      * @param nums
      * @return
      */
@@ -67,7 +68,7 @@ public class no228_summary_ranges {
             if (l < 0 || r < 0) {
                 l = i;
                 r = i;
-            } else if (iter == nums[r] || iter == nums[r] + 1) {
+            } else if (iter == nums[r] + 1) {
                 r = i;
             } else {
                 if (nums[r] == nums[l]) {
@@ -78,18 +79,13 @@ public class no228_summary_ranges {
                 l = r = i;
             }
 
-
             if (iter == Integer.MAX_VALUE) {
-                if (nums[r] == iter || iter == nums[r] + 1) {
-                    if (nums[l] == nums[r]) {
-                        result.add(iter + "");
-                    } else {
-                        result.add(nums[l] + "->" + nums[r]);
-                    }
+                if (nums[l] == nums[r]) {
+                    result.add(iter + "");
                 } else {
                     result.add(nums[l] + "->" + nums[r]);
-                    result.add(iter + "");
                 }
+
                 l = r = -1;
             }
         }
@@ -126,13 +122,13 @@ public class no228_summary_ranges {
     }
     public static void main(String args[]) {
         no228_summary_ranges obj = new no228_summary_ranges();
-        List<String> result = obj.summaryRanges(new int[]{0, 1, 2, 3, 3,5});
+        List<String> result = obj.summaryRanges1(new int[]{0, 1, 2, 3, 3,5});
         System.out.println(result);
 
-        result = obj.summaryRanges(new int[]{0,1,2,4,5,7});
+        result = obj.summaryRanges1(new int[]{0,1,2,4,5,7});
         System.out.println(result);
 
-        result = obj.summaryRanges(new int[]{0,1,2,3,5,2147483647,-2147483648});
+        result = obj.summaryRanges1(new int[]{0,1,2,3,5,2147483647,-2147483648});
         System.out.println(result);
     }
 }
