@@ -56,12 +56,14 @@ public class no239_sliding_window_maximum {
         int len = nums.length;
         int resultLen = len - k + 1;
         int[] result = new int[resultLen];
-        int temp[] = new int[k];
+        int temp[] = new int[k];//当作 环形数组
         int start = 0;
         int index = 0;
 
+        // 最大值 出现次数
         int lastMax = nums[0],lastMaxCount = 0;
-        int lastPop = nums[0];
+        int currPop = nums[0];// 当前pop out值
+        // 计算最大值 最大值次数
         for (int i = 0; i < k; i++) {
             if (nums[i] > lastMax) lastMax = nums[i];
             temp[i] = nums[i];
@@ -71,21 +73,20 @@ public class no239_sliding_window_maximum {
         }
 
         result[index++] = lastMax;
-
         for (int i = 1; i < resultLen; i++) {
-            lastPop = temp[start];
-            temp[start++] = nums[k + i - 1];
-            if(nums[k + i - 1] == 79){
-                System.out.println(79);
-            }
-            if(nums[k + i -1] == lastMax) lastMaxCount ++;
-            else if (nums[k + i - 1] > lastMax) {
-                lastMax = nums[k + i - 1];
+            currPop = temp[start];
+            int curr = nums[k + i - 1];
+            temp[start++] = curr;
+
+            if(curr == lastMax) lastMaxCount ++;
+            else if (curr > lastMax) {
+                lastMax = curr;
                 lastMaxCount = 1;
             } else {
-                if(lastMax == lastPop) lastMaxCount --;
+                if(lastMax == currPop) lastMaxCount --;
 
-                if (lastPop == lastMax && lastMaxCount ==0) {
+                // 重新计算最大值 最大值次数
+                if (currPop == lastMax && lastMaxCount ==0) {
                     lastMax = temp[0];
                     for (int j = 1; j < k; j++) {
                         if (temp[j] > lastMax) lastMax = temp[j];

@@ -47,7 +47,8 @@ public class no238_product_of_array_except_self {
     }
 
     /**
-     * 参考官方解答
+     * 左右乘积列表(参考官方解答)
+     *
      * @param nums
      * @return
      */
