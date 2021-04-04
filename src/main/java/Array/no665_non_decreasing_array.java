@@ -1,8 +1,9 @@
 package Array;
 
 /**
- * 给你一个长度为 n 的整数数组，请你判断在 最多 改变 1 个元素的情况下，该数组能否变成一个非递减数列。
+ * 665. 非递减数列
  *
+ * 给你一个长度为 n 的整数数组，请你判断在 最多 改变 1 个元素的情况下，该数组能否变成一个非递减数列。
  * 我们是这样定义一个非递减数列的： 对于数组中所有的 i (0 <= i <= n-2)，总满足 nums[i] <= nums[i + 1]。
  *
  * 示例 1:
@@ -39,23 +40,23 @@ public class no665_non_decreasing_array {
         boolean flag = false;
         int len = nums.length;
         for (int i = 1; i < len; i++) {
-            int currVal = nums[i];
+            int curr = nums[i];
             int pre = nums[i - 1];
-            if (currVal < pre) {
-
-                int next = currVal;
+            if (curr < pre) {
+                int next = curr;
                 if (i + 1 < len) {
                     next = nums[i + 1];
                 } else {
-                    currVal = Integer.MAX_VALUE;
+                    curr = Integer.MAX_VALUE;
                 }
 
-
                 if (next >= pre) {
+                    // 改变curr值
                     nums[i] = next;
                 } else {
-                    nums[i - 1] = currVal;
-                    if (i - 2 >= 0 && nums[i - 2] > currVal) {
+                    // 改变pre值
+                    nums[i - 1] = curr;
+                    if (i - 2 >= 0 && nums[i - 2] > curr) {
                         return false;
                     }
                 }
