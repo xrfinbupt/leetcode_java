@@ -58,7 +58,7 @@ public class no46_permutations {
     }
 
     /**
-     * 参考官方解答 思路很妙
+     * 参考官方解答 (思路很妙)
      * 执行用时：1 ms, 在所有 Java 提交中击败了96.75%的用户
      *
      * @param nums
