@@ -19,6 +19,7 @@ https://v2ex.com/t/723418#reply10  说几个leetcode 上看似简单却又非常
 而速成的只能靠刷题，刷不出这些 idea 。他甚至不知道 binary search merge 的存在。
 但是如果他但凡看过 MIT 、普林斯顿或任何一个名校的算法公开课，他都会知道 binary merge/median find 不是那么的简单的问题。
 
+2021年4月07日总结：[为了更快的砍柴，每日磨刀：LeetCode刷题总结（数组篇）](https://mp.weixin.qq.com/s/Av3wcmu3vUCT3QTi7luk2Q)
 2021年3月07日有感：https://labuladong.github.io/algo/算法思维系列/学习数据结构和算法的高效方法.html
 2021年2月28日有感：https://my.oschina.net/u/4594475/blog/4487406 八大算法思想 
 2021年2月20日有感：每一道题 看看执行时间 100%的人的解法 开拓视野
