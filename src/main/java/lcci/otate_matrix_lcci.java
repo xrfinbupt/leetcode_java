@@ -39,6 +39,10 @@ package lcci;
  * 链接：https://leetcode-cn.com/problems/rotate-matrix-lcci
  */
 public class otate_matrix_lcci {
+    /**
+     * 自己想的一种方法 可以继续优化一下
+     * @param matrix
+     */
     public void rotate(int[][] matrix) {
         int len = matrix.length;
         int N = len;
@@ -96,9 +100,27 @@ public class otate_matrix_lcci {
         matrix[nextI][nextJ] = next;
         next = curr;
     }
+
+    /**
+     * 官方解答 不好想到
+     * @param matrix
+     */
+    public void rotate2(int[][] matrix) {
+        int len = matrix.length;
+        int N = len;
+        for (int i = 0; i < N / 2; i++) {
+            for (int j = 0; j < (N + 1) / 2; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[N - 1 - j][i];
+                matrix[N - 1 - j][i] = matrix[N - 1 - i][N - 1 - j];
+                matrix[N - 1 - i][N - 1 - j] = matrix[j][N - 1 - i];
+                matrix[j][N - 1 - i] = temp;
+            }
+        }
+    }
     public static void main(String args[]){
         int[][] matrix = {{1,2,3},{4,5,6},{7,8,9}};
         otate_matrix_lcci obj = new otate_matrix_lcci();
-        obj.rotate(matrix);
+        obj.rotate2(matrix);
     }
 }
