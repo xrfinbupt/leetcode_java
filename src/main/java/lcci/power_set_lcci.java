@@ -57,16 +57,58 @@ public class power_set_lcci {
     }
 
     /**
-     * 非递归实现
+     * 非递归实现(思路很赞) 参考网上解答
      *
      * @param nums
      * @return
      */
     public List<List<Integer>> subsets2(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>(1 << nums.length);
         if (nums == null || nums.length == 0) return result;
 
-        List<Integer> data = new ArrayList<>();
+        result.add(new ArrayList<>());
+
+        for (int num : nums) {
+            for (int i = 0, j = result.size(); i < j; i++) {
+                List<Integer> data = new ArrayList<>(result.get(i));
+                data.add(num);
+
+                result.add(data);
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * 非递归实现 之前78题实现过
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> subsets3(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>(1 << nums.length);
+        if (nums == null || nums.length == 0) return result;
+
+        int len = nums.length;
+        int sum = (1 << len) - 1;
+        for (int num = 0; num <= sum; num++) {
+            if (num == 0) {
+                result.add(new ArrayList<>());
+            } else {
+                int val = num;
+                List<Integer> data = new ArrayList<>();
+                for (int i = 0; i < len; i++) {
+                    int temp = 1 << i;
+                    if ((val & temp) > 0) {
+                        data.add(nums[i]);
+                        val = val - temp;
+                    }
+
+                    if (val == 0) break;
+                }
+                result.add(data);
+            }
+        }
 
         return result;
     }
