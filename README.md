@@ -20,6 +20,7 @@ https://leetcode-cn.com/progress/ 温习之前刷过的题目
 ```
 | 时间      | 说明 |   
 | :--------- | :--: | 
+|   2021年4月16日有感   | 尽量多刷同一类型的题目 |
 |   2021年4月07日总结   |  [为了更快的砍柴，每日磨刀：LeetCode刷题总结（数组篇）](https://mp.weixin.qq.com/s/Av3wcmu3vUCT3QTi7luk2Q)  |
 | 2021年3月07日有感 |  [学习数据结构和算法的高效方法](https://labuladong.github.io/algo/算法思维系列/学习数据结构和算法的高效方法.html)  |
 | 2021年2月28日有感 |  [八大算法思想](https://my.oschina.net/u/4594475/blog/4487406)  |
