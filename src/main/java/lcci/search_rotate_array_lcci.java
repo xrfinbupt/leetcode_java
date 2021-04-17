@@ -17,6 +17,7 @@ package lcci;
  * arr 长度范围在[1, 1000000]之间
  *
  * 链接：https://leetcode-cn.com/problems/search-rotate-array-lcci
+ * 相似题：leetcode 154、81、34
  */
 public class search_rotate_array_lcci {
     /**
@@ -36,7 +37,7 @@ public class search_rotate_array_lcci {
         if (arr[left] > arr[right]) {
             while (left < right) {
                 int mid = left + (right - left) / 2;
-                if (arr[mid] > arr[right]) {
+                if (arr[mid] >= arr[0]) {
                     left = mid + 1;
                 } else {
                     right = mid;

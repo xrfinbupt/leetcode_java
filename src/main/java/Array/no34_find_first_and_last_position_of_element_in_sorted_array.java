@@ -38,8 +38,8 @@ public class no34_find_first_and_last_position_of_element_in_sorted_array {
      * 二分法 参考:https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/solution/da-jia-bu-yao-kan-labuladong-de-jie-fa-fei-chang-2/
      *
      * 形式:
-     * 1 while (left <= right) 简单问题用，在循环体里能找到答案以后退出
-     * 2 while (left < right)  复杂问题用，把答案留到退出循环以后，再判断
+     * 1 while (left <= right) 简单问题用，在循环体里能找到答案以后退出。 退出循环的时候 left = right + 1，即right 在左，left在右；
+     * 2 while (left < right)  复杂问题用，把答案留到退出循环以后，再判断。退出循环的时候 left == right
      *
      * @param nums
      * @param target
