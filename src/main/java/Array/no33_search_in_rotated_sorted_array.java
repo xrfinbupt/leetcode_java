@@ -45,7 +45,7 @@ public class no33_search_in_rotated_sorted_array {
                 }
             }
         }
-        System.out.println("left:"+left+" right:"+right);
+
         if (left == right) {
             if (target < nums[left] || right - 1 >= 0 && target > nums[right - 1]) {
                 return -1;
