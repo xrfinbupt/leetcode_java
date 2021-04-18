@@ -24,6 +24,12 @@ package Array;
  */
 public class no704_binary_search {
 
+    /**
+     * 方法1 left <= right
+     * @param nums
+     * @param target
+     * @return
+     */
     public int search(int[] nums, int target) {
         if (nums == null || nums.length == 0) return -1;
         int len = nums.length;
@@ -38,6 +44,30 @@ public class no704_binary_search {
                 l = mid + 1;
             }
         }
+        return -1;
+    }
+
+    /**
+     * 方法2 left < right
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int search2(int[] nums, int target) {
+        if (nums == null || nums.length == 0) return -1;
+
+        int len = nums.length;
+        int l = 0, r = len - 1;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            if (nums[mid] < target) {
+                l = mid + 1;
+            } else {
+                r = mid;
+            }
+            // System.out.println("l:"+l + " r:"+r);
+        }
+        if (nums[l] == target) return l;
         return -1;
     }
 }
