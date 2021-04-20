@@ -61,7 +61,7 @@ public class no704_binary_search {
         while (l < r) {
             int mid = l + (r - l) / 2;
             if (nums[mid] < target) {
-                l = mid + 1;
+                l = mid + 1; // 避免死循环
             } else {
                 r = mid;
             }
