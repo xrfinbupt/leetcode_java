@@ -132,4 +132,41 @@ public class tic_tac_toe_lcci {
 
         return "Draw";
     }
+
+    /**
+     * 还有一种求和的思路
+     * https://leetcode-cn.com/problems/tic-tac-toe-lcci/solution/qiu-he-de-si-xiang-java-ban-jia-zhu-shi-by-noscall/
+     *
+     * @param board
+     * @return
+     */
+    public String tictactoe2(String[] board) {
+        int length = board.length;
+
+        int rowSum = 0, colSum = 0;
+        int leftSum = 0, rightSum = 0;
+        boolean flag = false;
+        for (int i = 0; i < length; i++) {
+            rowSum = 0;
+            colSum = 0;
+            String str = board[i];
+            for (int j = 0; j < length; j++) {
+                String str1 = board[j];
+                rowSum += str.charAt(j);
+                colSum += str1.charAt(i);
+
+                if (str.charAt(j) == ' ') flag = true;
+            }
+            if (rowSum == 'X' * length || colSum == 'X' * length) return "X";
+            if (rowSum == 'O' * length || colSum == 'O' * length) return "O";
+
+            leftSum += str.charAt(i);
+            rightSum += str.charAt(length - 1 - i);
+        }
+        if (leftSum == 'X' * length || rightSum == 'X' * length) return "X";
+        if (leftSum == 'O' * length || rightSum == 'O' * length) return "O";
+
+        if (flag) return "Pending";
+        return "Draw";
+    }
 }
