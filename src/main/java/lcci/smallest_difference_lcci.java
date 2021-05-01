@@ -63,4 +63,32 @@ public class smallest_difference_lcci {
         }
         return minDiff;
     }
+
+    /**
+     * 方法2
+     * @param a
+     * @param b
+     * @return
+     */
+    public int smallestDifference2(int[] a, int[] b) {
+       Arrays.sort(a);
+       Arrays.sort(b);
+       int lenA = a.length;
+       int lenB = b.length;
+       int p1 = 0,p2 = 0;
+       long minDiff = Long.MAX_VALUE;
+
+       while(p1<lenA && p2 < lenB){
+           long diff = a[p1] - b[p2];
+           if(diff == 0) return 0;
+
+           if(diff>0){
+               p2++;
+           }else{
+               p1++;
+           }
+           if(Math.abs(minDiff) < minDiff) minDiff =Math.abs(minDiff);
+       }
+       return (int) minDiff;
+    }
 }
