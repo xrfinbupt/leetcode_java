@@ -75,4 +75,25 @@ public class living_people_lcci {
         }
         return minYear;
     }
+    public int maxAliveYear3(int[] birth, int[] death) {
+        int[] lives = new int[102];
+        int len = birth.length;
+        for (int i = 0; i < len; i++) {
+            lives[birth[i] - 1900]++;
+        }
+        for (int i = 0; i < len; i++) {
+            lives[death[i] - 1900 + 1]--;
+        }
+        int preSum  = lives[0];
+        int minYear = 1900;
+        int max = preSum;
+        for (int i = 1; i < 102; i++) {
+            preSum = lives[i] + preSum;
+            if (preSum > max) {
+                max = preSum;
+                minYear = i + 1900;
+            }
+        }
+        return minYear;
+    }
 }
