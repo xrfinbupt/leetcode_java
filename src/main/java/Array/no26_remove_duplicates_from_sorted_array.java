@@ -118,21 +118,20 @@ public class no26_remove_duplicates_from_sorted_array {
     }
 
     /**
-     * 同上
-     * @param nums
-     * @return
+     * 我们定义两个指针slow和fast分别为慢指针和快指针，其中慢指针表示处理出的数组的长度，快指针表示已经检查过的数组的长度
+     * 即 nums[fast] 表示待检查的第一个元素，nums[slow−1] 为上一个应该被保留的元素所移动到的指定位置。
      */
     public int removeDuplicates3(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
-        int pslow = 0;
+        int pslow = 1;
         int len = nums.length;
         for(int i=1;i<len;i++){
-            if(nums[i]!=nums[pslow]){
-                pslow++;
+            if(nums[i]!=nums[pslow-1]){
                 nums[pslow] = nums[i];
+                pslow++;
             }
         }
-        return pslow + 1;
+        return pslow;
     }
 
     public static void main(String args[]) {
