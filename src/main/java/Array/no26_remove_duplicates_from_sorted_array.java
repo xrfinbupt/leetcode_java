@@ -101,6 +101,22 @@ public class no26_remove_duplicates_from_sorted_array {
         return pslow + 1;
     }
 
+    public int removeDuplicates22(int[] nums) {
+        int len = nums.length;
+        int p1 = 0, p2 = 0;
+        while (true) {
+            while (p2 < len && nums[p1] == nums[p2]) p2++;
+            if (p2 == len) {
+                break;
+            }
+            p1++;
+            if (p1 != p2) {
+                nums[p1] = nums[p2];
+            }
+        }
+        return p1 + 1;
+    }
+
     /**
      * 同上
      * @param nums
