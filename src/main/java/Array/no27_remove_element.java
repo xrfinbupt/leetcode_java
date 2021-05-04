@@ -59,4 +59,28 @@ public class no27_remove_element {
 
         return result;
     }
+    public int removeElement2(int[] nums, int val) {
+        int len = nums.length;
+        int s = 0;
+
+        int i = 0;
+        while(i<len && nums[i]!=val){
+            i++;
+        }
+        int j = i;
+        while(j<len && nums[j]==val){
+            j++;
+        }
+
+        while(j<len){
+            if(nums[j]!=val){
+                nums[i] = nums[j];
+                i++;
+                j++;
+            }else{
+                j++;
+            }
+        }
+        return i;
+    }
 }
