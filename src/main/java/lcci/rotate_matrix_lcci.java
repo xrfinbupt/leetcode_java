@@ -38,7 +38,7 @@ package lcci;
  *
  * 链接：https://leetcode-cn.com/problems/rotate-matrix-lcci
  */
-public class otate_matrix_lcci {
+public class rotate_matrix_lcci {
     /**
      * 自己想的一种方法 可以继续优化一下
      * @param matrix
@@ -120,7 +120,7 @@ public class otate_matrix_lcci {
     }
     public static void main(String args[]){
         int[][] matrix = {{1,2,3},{4,5,6},{7,8,9}};
-        otate_matrix_lcci obj = new otate_matrix_lcci();
+        rotate_matrix_lcci obj = new rotate_matrix_lcci();
         obj.rotate2(matrix);
     }
 }
