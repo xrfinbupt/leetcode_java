@@ -122,19 +122,47 @@ public class no55_jump_game {
         return path[len-1]>0?true:false;
     }
 
+    /**
+     * 执行用时：1 ms, 在所有 Java 提交中击败了99.98%的用户
+     * 内存消耗：39.9 MB, 在所有 Java 提交中击败了97.35%的用户
+     *
+     * @param nums
+     * @return
+     */
+    public boolean canJump4(int[] nums) {
+        if (nums.length == 1) {
+            return true;
+        }
+
+        int len = nums.length;
+        int lastPath = 0;
+        for (int j = 0; j < len; j++) {
+            if (lastPath < j) return false;
+            int maxPath = nums[j] + j;
+
+            if(maxPath>= len-1) return true;
+            else if(lastPath >= maxPath) continue;
+            else {
+                lastPath = maxPath;
+            }
+        }
+
+        return lastPath==len-1?true:false;
+    }
+
     public static void main(String[] args){
         no55_jump_game obj = new no55_jump_game();
         boolean flag =false;
-        flag = obj.canJump3(new int[]{2,0});
+        flag = obj.canJump4(new int[]{2,0});
         System.out.println(flag);
 
-        flag = obj.canJump3(new int[]{2,0,0});
+        flag = obj.canJump4(new int[]{2,0,0});
         System.out.println(flag);
 
-        flag = obj.canJump3(new int[]{2,0,1,0});
+        flag = obj.canJump4(new int[]{2,0,1,0});
         System.out.println(flag);
 
-        flag = obj.canJump3(new int[]{2,3,1,1,4});
+        flag = obj.canJump4(new int[]{2,3,1,1,4});
         System.out.println(flag);
     }
 }
