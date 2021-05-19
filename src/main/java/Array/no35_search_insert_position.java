@@ -27,8 +27,11 @@ package Array;
 public class no35_search_insert_position {
     public int searchInsert(int[] nums, int target) {
         if (nums == null || nums.length == 0) return 0;
+        if(nums[0]>target ) return 0;
 
         int len = nums.length;
+        if(nums[len-1]<target) return len;
+
         int left = 0, right = len - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
