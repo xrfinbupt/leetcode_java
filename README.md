@@ -20,6 +20,7 @@ https://leetcode-cn.com/progress/ 温习之前刷过的题目
 ```
 | 时间      | 说明 |   
 | :--------- | :--: | 
+|   2021年5月25日有感   | talk is cheap show me the action and result |
 |   2021年5月22日有感   | 最近主要把一年前刷的题 从另一个账号迁移到leetcode新账号下 |
 |   2021年4月16日有感   | 尽量多刷同一类型的题目 |
 |   2021年4月07日总结   |  [为了更快的砍柴，每日磨刀：LeetCode刷题总结（数组篇）](https://mp.weixin.qq.com/s/Av3wcmu3vUCT3QTi7luk2Q)  |
