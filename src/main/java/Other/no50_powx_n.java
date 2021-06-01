@@ -37,7 +37,7 @@ public class no50_powx_n {
      * @param n
      * @return
      */
-    public double myPow(double x, int n) {
+    public double myPow1(double x, int n) {
         if(x==0) return 0;
         if(n==0 || x==1) return 1;
 
@@ -102,6 +102,34 @@ public class no50_powx_n {
 
         return preSum;
     }
+
+    /**
+     * 二分法 这种方法 写法太简洁了
+     *
+     * @param x
+     * @param n
+     * @return
+     */
+    public double myPow(double x, int n) {
+        if (x == 0) return 0;
+        if (n == 0 || x == 1) return 1;
+
+        if (n < 0) {
+            return 1.0 / sub_myPow(x, 0 - n);
+        } else {
+            return sub_myPow(x, n);
+        }
+    }
+
+    public double sub_myPow(double x, int n) {
+        if (n == 0) return 1;
+        double y = sub_myPow(x, n / 2);
+        if (n % 2 == 0) {
+            return y * y;
+        }
+        return y * y * x;
+    }
+
     public static void main(String args[]){
         no50_powx_n obj = new no50_powx_n();
         double result = obj.myPow(2, 9); //1024
