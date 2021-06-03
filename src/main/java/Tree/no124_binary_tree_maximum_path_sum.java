@@ -57,9 +57,7 @@ public class no124_binary_tree_maximum_path_sum {
         int max = Math.max(leftVal, Math.max(includeRootValMax, Math.max(rightVal, val + leftVal + rightVal)));
         if (max > result) result = max;
 
-        if (max == (leftVal + val + rightVal)) {
-            return includeRootValMax;
-        } else if (includeRootValMax >= 0) {
+        if (includeRootValMax >= 0) {
             return includeRootValMax;
         } else {
             return -5000;
