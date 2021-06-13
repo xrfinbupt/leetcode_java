@@ -29,7 +29,7 @@ import java.util.Set;
  *
  * 链接：https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof
  */
-public class er_wei_shu_zu_zhong_de_cha_zhao_lcof {
+public class no4_findNumberIn2DArray {
     /**
      * 方法1 辅助HashMap查找
      *

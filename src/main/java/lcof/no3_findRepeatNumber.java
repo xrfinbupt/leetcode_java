@@ -17,7 +17,7 @@ package lcof;
  *
  * 链接：https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof
  */
-public class shu_zu_zhong_zhong_fu_de_shu_zi_lcof {
+public class no3_findRepeatNumber {
     /**
      * 执行用时：3 ms, 在所有 Java 提交中击败了59.16%的用户
      * 内存消耗：46.2 MB, 在所有 Java 提交中击败了64.34%的用户
