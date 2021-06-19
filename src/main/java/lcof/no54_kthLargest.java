@@ -38,6 +38,8 @@ import java.util.PriorityQueue;
  * 链接：https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof
  */
 public class no54_kthLargest {
+    int result = 0;
+    boolean flag = false;
     /**
      * 方法1 暴力法
      * 执行用时：5 ms, 在所有 Java 提交中击败了5.36%的用户
@@ -119,12 +121,42 @@ public class no54_kthLargest {
         return;
     }
 
+    /**
+     * 执行用时：2 ms, 在所有 Java 提交中击败了9.59%的用户
+     * 内存消耗：38.2 MB, 在所有 Java 提交中击败了75.09%的用户
+     */
+    public int kthLargest4(TreeNode root, int k) {
+        PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
+        recursive_kthLargest4(root, queue, k);
+
+        if(flag) return result;
+        else return queue.peek();
+    }
+    public void recursive_kthLargest4(TreeNode root, PriorityQueue<Integer> queue, int k) {
+        if (root == null || flag) return;
+
+        if (queue.size() < k) {
+            queue.add(root.val);
+        } else if (queue.size() == k && queue.peek() < root.val) {
+            queue.poll();
+            queue.add(root.val);
+        } else {
+            flag = true;
+            result = queue.peek();
+            return;
+        }
+
+        recursive_kthLargest4(root.right, queue, k);
+        recursive_kthLargest4(root.left, queue, k);
+
+        return;
+    }
     public static void main(String arg[]){
         TreeNode root = new TreeNode(3);
-        root.left = new TreeNode(1);
+        //root.left = new TreeNode(1);
         root.right = new TreeNode(4);
         no54_kthLargest obj = new no54_kthLargest();
-        int result = obj.kthLargest3(root,2);
+        int result = obj.kthLargest4(root,2);
         System.out.println(result);
     }
 }
