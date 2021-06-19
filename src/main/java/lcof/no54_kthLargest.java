@@ -38,7 +38,7 @@ import java.util.PriorityQueue;
  * 链接：https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof
  */
 public class no54_kthLargest {
-    int result = 0;
+    int result = 0,k=0;
     boolean flag = false;
     /**
      * 方法1 暴力法
@@ -150,6 +150,26 @@ public class no54_kthLargest {
         recursive_kthLargest4(root.left, queue, k);
 
         return;
+    }
+
+    /**
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：38 MB, 在所有 Java 提交中击败了93.10%的用户
+     *
+     * 参考解答
+     * https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof/solution/mian-shi-ti-54-er-cha-sou-suo-shu-de-di-k-da-jie-d/
+     */
+    public int kthLargest5(TreeNode root, int k) {
+        this.k = k;
+        dfs(root);
+        return result;
+    }
+    private void dfs(TreeNode root) {
+        if (root == null) return;
+        if (k == 0) return;
+        dfs(root.right);
+        if (--k == 0) result = root.val;
+        dfs(root.left);
     }
     public static void main(String arg[]){
         TreeNode root = new TreeNode(3);
