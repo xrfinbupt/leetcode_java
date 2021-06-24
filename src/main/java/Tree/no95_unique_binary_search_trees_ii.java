@@ -171,6 +171,36 @@ public class no95_unique_binary_search_trees_ii {
         return myroot;
     }
 
+    /**
+     * 参考官方解答
+     * 执行用时：1 ms, 在所有 Java 提交中击败了99.42%的用户
+     * 内存消耗：39.2 MB, 在所有 Java 提交中击败了34.10%的用户
+     */
+    public List<TreeNode> generateTrees3(int n) {
+        if (n < 1) return new ArrayList<>();
+
+        return generateTrees3(1, n);
+    }
+    public List<TreeNode> generateTrees3(int start, int end) {
+        List<TreeNode> result = new ArrayList<>();
+        if (start > end) {
+            result.add(null);
+            return result;
+        }
+        for (int i = start; i <= end; i++) {
+            List<TreeNode> lefts = generateTrees3(start, i - 1);
+            List<TreeNode> rights = generateTrees3(i + 1, end);
+            for (TreeNode left : lefts) {
+                for (TreeNode right : rights) {
+                    TreeNode curr = new TreeNode(i);
+                    curr.left = left;
+                    curr.right = right;
+                    result.add(curr);
+                }
+            }
+        }
+        return result;
+    }
     public static void main(String args[]){
         no95_unique_binary_search_trees_ii obj = new no95_unique_binary_search_trees_ii();
         List<TreeNode> result = obj.generateTrees(2);
