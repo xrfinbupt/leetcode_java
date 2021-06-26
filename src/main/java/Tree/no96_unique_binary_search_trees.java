@@ -23,6 +23,7 @@ import java.util.Map;
  */
 public class no96_unique_binary_search_trees {
     private Map<String,Integer> cache = new HashMap<String,Integer>();
+    private Map<Integer,Integer> dp = new HashMap<Integer,Integer>();
     /**
      * 不加cache 这种方法就超时了
      *
@@ -33,6 +34,18 @@ public class no96_unique_binary_search_trees {
         if(n<1) return 0;
 
         return numTrees(1,n);
+    }
+
+    /**
+     * 参考 https://leetcode-cn.com/problems/unique-binary-search-trees/solution/bu-tong-de-er-cha-sou-suo-shu-by-leetcode-solution/
+     *
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：35.1 MB, 在所有 Java 提交中击败了63.74%的用户
+     */
+    public int numTrees2(int n) {
+        if(n<1) return 0;
+
+        return numTrees2(1,n);
     }
 
     public int numTrees(int start,int end) {
@@ -50,6 +63,24 @@ public class no96_unique_binary_search_trees {
         }
 
         cache.put(key,result);
+
+        return result;
+    }
+    public int numTrees2(int start,int end) {
+        if(start > end) return 1;
+
+        Integer key = end -  start;
+        Integer cacheData = dp.get(key);
+        if (cacheData != null) return cacheData;
+
+        int result = 0;
+        for(int i=start;i<=end;i++){
+            int left = numTrees2(start,i-1);
+            int right = numTrees2(i+1,end);
+            result += left*right;
+        }
+
+        dp.put(key,result);
 
         return result;
     }
