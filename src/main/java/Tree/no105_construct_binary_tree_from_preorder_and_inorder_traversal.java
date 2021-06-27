@@ -65,4 +65,39 @@ public class no105_construct_binary_tree_from_preorder_and_inorder_traversal {
 
         return;
     }
+
+    /** 这种方法 思路清晰一点
+     * 执行用时：5 ms, 在所有 Java 提交中击败了27.90%的用户
+     * 内存消耗：38.5 MB, 在所有 Java 提交中击败了61.70%的用户
+     */
+    public TreeNode buildTree2(int[] preorder, int[] inorder) {
+        if(preorder == null || inorder == null) return null;
+
+        int len1 = preorder.length;
+        int len2 = inorder.length;
+        if(len1<1 || len1!=len2) return null;
+
+        return buildTree2(preorder,0,len1-1,inorder,0,len2-1);
+    }
+    public TreeNode buildTree2(int[] preorder,int start1,int end1, int[] inorder,int start2,int end2) {
+        if(end1< start1 || end2 < start2) return null;
+
+        int rootVal = preorder[start1];
+        TreeNode root = new TreeNode(rootVal);
+
+        int i = start2;
+        while(inorder[i]!=rootVal) i++;
+        int len = i - start2;
+
+        root.left = buildTree2(preorder,start1+1,start1 + len,inorder,start2,i-1);
+        root.right = buildTree2(preorder,start1 +len +1,end1,inorder,i+1,end2);
+
+        return root;
+    }
+    public static void main(String args[]){
+        no105_construct_binary_tree_from_preorder_and_inorder_traversal obj =
+                new no105_construct_binary_tree_from_preorder_and_inorder_traversal();
+        TreeNode root = obj.buildTree2(new int[]{3, 9, 20, 15, 7}, new int[]{9, 3, 15, 20, 7});
+        System.out.println(root);
+    }
 }
