@@ -117,4 +117,38 @@ public class no102_binary_tree_level_order_traversal {
 
         return ;
     }
+
+    /**
+     * 参考官方解答 dfs解法
+     *
+     * 执行用时：1 ms, 在所有 Java 提交中击败了94.96%的用户
+     * 内存消耗：38.9 MB, 在所有 Java 提交中击败了9.12%的用户
+     */
+    public List<List<Integer>> levelOrder4(TreeNode root) {
+        if (root == null) return new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
+
+        dfs_levelOrder(root, 0, result);
+
+        return result;
+    }
+
+    public void dfs_levelOrder(TreeNode root, int level, List<List<Integer>> result) {
+        if (root == null) return;
+        if (result.size() <= level) result.add(new ArrayList<>());
+        result.get(level).add(root.val);
+
+        if (root.left != null) dfs_levelOrder(root.left, level + 1, result);
+        if (root.right != null) dfs_levelOrder(root.right, level + 1, result);
+        return;
+    }
+    public static void main(String args[]){
+        no102_binary_tree_level_order_traversal obj = new no102_binary_tree_level_order_traversal();
+
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        List<List<Integer>> result = obj.levelOrder4(root);
+        System.out.println(result);
+    }
 }
