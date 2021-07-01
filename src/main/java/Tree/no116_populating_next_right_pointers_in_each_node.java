@@ -1,6 +1,5 @@
 package Tree;
 
-import common.Node;
 import common.Node1;
 
 import java.util.ArrayDeque;
@@ -60,6 +59,27 @@ public class no116_populating_next_right_pointers_in_each_node {
                     pre = p;
                 }
             }
+        }
+        return root;
+    }
+
+    /**
+     * 参考官方解答
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：38.3 MB, 在所有 Java 提交中击败了95.91%的用户
+     */
+    public Node1 connect2(Node1 root) {
+        if(root == null) return null;
+        Node1 leftMost = root;
+        while(leftMost.left!=null){
+            Node1 head = leftMost;
+            while(head!=null){
+                head.left.next = head.right;
+
+                if(head.next!=null) head.right.next = head.next.left;
+                head = head.next;
+            }
+            leftMost = leftMost.left;
         }
         return root;
     }
