@@ -26,6 +26,7 @@ import java.util.*;
  * 链接：https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal
  */
 public class no103_binary_tree_zigzag_level_order_traversal {
+    private List<List<Integer>> result = new ArrayList<>();
     /**
      * 执行用时：2 ms, 在所有 Java 提交中击败了19.90%的用户
      * 内存消耗：38.5 MB, 在所有 Java 提交中击败了70.53%的用户
@@ -96,5 +97,28 @@ public class no103_binary_tree_zigzag_level_order_traversal {
             size = queue.size();
         }
         return result;
+    }
+
+    /**
+     * dfs方法
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：38.2 MB, 在所有 Java 提交中击败了95.64%的用户
+     */
+    public List<List<Integer>> zigzagLevelOrder3(TreeNode root) {
+        if(root == null) return result;
+        dfs(root,0,true);
+
+        return result;
+    }
+    public void dfs(TreeNode root,int level,boolean dirRight) {
+        if(root==null) return;
+        if(result.size() == level) result.add(new LinkedList<>());
+
+        LinkedList<Integer> datas = (LinkedList)result.get(level);
+        if(dirRight) datas.addLast(root.val);
+        else datas.addFirst(root.val);
+
+        dfs(root.left,level+1,!dirRight);
+        dfs(root.right,level+1,!dirRight);
     }
 }
