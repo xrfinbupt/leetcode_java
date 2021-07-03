@@ -28,6 +28,7 @@ import java.util.List;
  * 链接：https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii
  */
 public class no107_binary_tree_level_order_traversal_ii {
+    private List<List<Integer>> result = new LinkedList<>();
     /**
      * 执行用时：1 ms, 在所有 Java 提交中击败了99.31%的用户
      * 内存消耗：38.7 MB, 在所有 Java 提交中击败了50.69%的用户
@@ -51,5 +52,30 @@ public class no107_binary_tree_level_order_traversal_ii {
             dataLinkResult = new LinkedList<>();
         }
         return linkResult;
+    }
+
+    /**
+     * 执行用时：1 ms, 在所有 Java 提交中击败了99.32%的用户
+     * 内存消耗：38.3 MB, 在所有 Java 提交中击败了95.70%的用户
+     */
+    public List<List<Integer>> levelOrderBottom2(TreeNode root) {
+        if(root == null) return new ArrayList<>();
+
+        dfs(root,0);
+        return result;
+    }
+    public void dfs(TreeNode root,int level) {
+        if(root == null) return ;
+
+        if(result.size() == level) {
+            result.add(0,new ArrayList<>());
+        }
+        List<Integer> datas = result.get(result.size() -1 - level);// 这个地方很妙
+        datas.add(root.val);
+
+        dfs(root.left,level+1);
+        dfs(root.right,level+1);
+
+        return;
     }
 }
