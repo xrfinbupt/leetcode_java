@@ -163,8 +163,8 @@ public class no117_populating_next_right_pointers_in_each_node_ii {
     }
 
     /**
-     * 参考官方解答
-     * bfs
+     * bfs 参考官方解答 实现很精妙！！！
+     *
      * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
      * 内存消耗：38 MB, 在所有 Java 提交中击败了66.89%的用户
      */
@@ -191,6 +191,36 @@ public class no117_populating_next_right_pointers_in_each_node_ii {
             nextStart = p;
         }
         last = p;
+    }
+
+    /**
+     * bfs 参考官方解答  实现的很精妙
+     *
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：37.9 MB, 在所有 Java 提交中击败了86.31%的用户
+     * @param root
+     * @return
+     */
+    public Node1 connect5(Node1 root) {
+        if (root == null) return root;
+
+        Node1 curr = root;
+        while (curr != null) {
+            Node1 dummy = new Node1(0);
+            Node1 pre = dummy;
+            for (; curr != null; curr = curr.next) {
+                if (curr.left != null) {
+                    pre.next = curr.left;
+                    pre = pre.next;
+                }
+                if (curr.right != null) {
+                    pre.next = curr.right;
+                    pre = pre.next;
+                }
+            }
+            curr = dummy.next;
+        }
+        return root;
     }
 
     public static void main(String args[]){
