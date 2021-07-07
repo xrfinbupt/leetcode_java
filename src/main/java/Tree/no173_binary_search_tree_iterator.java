@@ -2,6 +2,7 @@ package Tree;
 
 import common.TreeNode;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -48,6 +49,8 @@ import java.util.LinkedList;
 public class no173_binary_search_tree_iterator {
     private LinkedList<Integer> result = new LinkedList<>();
 
+    private ArrayDeque<TreeNode> result1 = new ArrayDeque<>();
+
     /**
      * 执行用时：24 ms, 在所有 Java 提交中击败了30.72%的用户
      * 内存消耗：42 MB, 在所有 Java 提交中击败了47.39%的用户
@@ -55,6 +58,23 @@ public class no173_binary_search_tree_iterator {
     public no173_binary_search_tree_iterator(TreeNode root) {
         result.clear();
         dfs(root);
+    }
+
+    /**
+     * 执行用时：18 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：41.9 MB, 在所有 Java 提交中击败了61.36%的用户
+     */
+    public void BSTIterator(TreeNode root) {
+        result1.clear();
+        queueLeft(root);
+    }
+    private void queueLeft(TreeNode root){
+        if(root == null) return;
+        TreeNode p = root;
+        while(p!=null){
+            result1.addFirst(p);
+            p = p.left;
+        }
     }
     private void dfs(TreeNode root){
         if(root == null)return;
@@ -68,9 +88,38 @@ public class no173_binary_search_tree_iterator {
         int val = result.removeFirst();
         return val;
     }
+    public int next1() {
+        TreeNode node = result1.removeFirst();
+        if(node.right!=null){
+            queueLeft(node.right);
+        }
+        return node.val;
+    }
 
     public boolean hasNext() {
         if(result.size()>0)return true;
         return false;
+    }
+    public boolean hasNext1() {
+        if(result1.size()>0)return true;
+        return false;
+    }
+    public static void main(String args[]){
+        no173_binary_search_tree_iterator obj = new no173_binary_search_tree_iterator(null);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(7);
+
+        root.left.right.left = new TreeNode(8);
+        root.left.right.right = new TreeNode(9);
+        obj.BSTIterator(root);
+
+        while(obj.hasNext1()){
+            System.out.println(obj.next1());
+        }
     }
 }
