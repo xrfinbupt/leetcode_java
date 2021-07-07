@@ -23,6 +23,7 @@ import java.util.List;
  * 链接：https://leetcode-cn.com/problems/binary-tree-right-side-view
  */
 public class no199_binary_tree_right_side_view {
+    List<Integer> result = new ArrayList<>();
     /**
      * 执行用时：2 ms, 在所有 Java 提交中击败了23.77%的用户
      * 内存消耗：37.3 MB, 在所有 Java 提交中击败了21.35%的用户
@@ -45,5 +46,25 @@ public class no199_binary_tree_right_side_view {
             }
         }
         return result;
+    }
+
+    /**
+     * 执行用时：1 ms, 在所有 Java 提交中击败了99.59%的用户
+     * 内存消耗：37 MB, 在所有 Java 提交中击败了62.71%的用户
+     */
+    public List<Integer> rightSideView2(TreeNode root) {
+        if (root == null) return result;
+
+        dfs(root,0);
+        return result;
+    }
+    private void dfs(TreeNode root,int level){
+        if(root == null)return;
+
+        if(result.size() == level){
+            result.add(root.val);
+        }
+        dfs(root.right,level+1);
+        dfs(root.left,level+1);
     }
 }
