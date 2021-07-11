@@ -1,4 +1,4 @@
-package Array;
+package DFS;
 
 import java.util.*;
 
