@@ -216,6 +216,36 @@ public class no200_number_of_islands {
         return num_islands;
     }
 
+    /**
+     * 执行用时：1 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：40.8 MB, 在所有 Java 提交中击败了61.20%的用户
+     */
+    int m,n;
+    public int numIslands4(char[][] grid) {
+        m = grid.length;
+        n = grid[0].length;
+        int num = 0;
+        for(int i=0;i<m;i++){
+            for(int j = 0;j<n;j++){
+                if(grid[i][j]=='1'){
+                    dfs(grid,i,j);
+                    num++;
+                }
+            }
+        }
+        return num;
+    }
+    public void dfs(char[][] grid,int row,int col) {
+        if(row <0 || row >=m || col <0 || col >=n || grid[row][col]!='1'){
+            return;
+        }
+        grid[row][col] = 'A';
+        dfs(grid,row-1,col);
+        dfs(grid,row+1,col);
+        dfs(grid,row,col-1);
+        dfs(grid,row,col+1);
+    }
+
     public static void main(String args[]) {
         no200_number_of_islands obj = new no200_number_of_islands();
         char data[][] = new char[][]{{'1', '1', '0', '0', '0'},
