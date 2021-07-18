@@ -42,7 +42,7 @@ import java.util.List;
  *
  * 链接：https://leetcode-cn.com/problems/minimum-height-trees
  */
-public class n310_minimum_height_trees {
+public class no310_minimum_height_trees {
     int minDeep = Integer.MAX_VALUE;
     List<Integer> result =new ArrayList<>();
     List<List<Integer>> edgeData = new ArrayList<>();
@@ -147,7 +147,7 @@ public class n310_minimum_height_trees {
     }
 
     public static void main(String args[]){
-        n310_minimum_height_trees obj = new n310_minimum_height_trees();
+        no310_minimum_height_trees obj = new no310_minimum_height_trees();
         List<Integer> res = obj.findMinHeightTrees(4,new int[][]{{1,0},{1,2},{1,3}});
         System.out.println(JSON.toJSON(res));
     }
