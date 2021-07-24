@@ -59,6 +59,36 @@ public class no332_reconstruct_itinerary {
 
         return result;
     }
+
+    /**
+     * 参考官方解答
+     *
+     * 执行用时：7 ms, 在所有 Java 提交中击败了82.79%的用户
+     * 内存消耗：39 MB, 在所有 Java 提交中击败了76.56%的用户
+     */
+    Map<String,PriorityQueue<String>> graph = new HashMap<>();
+    public List<String> findItinerary2(List<List<String>> tickets) {
+        for(List<String> ticket:tickets){
+            String from = ticket.get(0),to = ticket.get(1);
+            if(!graph.containsKey(from)){
+                graph.put(from,new PriorityQueue<>());
+            }
+            graph.get(from).offer(to);
+        }
+
+        List<String> result = new LinkedList<>();
+        dfs("JFK",result);
+        Collections.reverse(result);
+
+        return result;
+    }
+    private void dfs(String start,List<String> result){
+        while(graph.containsKey(start) && graph.get(start).size()>0){
+            String temp = graph.get(start).poll();
+            dfs(temp,result);
+        }
+        result.add(start); // 这一步不好想
+    }
     private void dfs(String start,int index){
         if(findFlag) return;
 
@@ -111,7 +141,7 @@ public class no332_reconstruct_itinerary {
 //[["JFK","KUL"],["JFK","NRT"],["NRT","JFK"]]
         tickets.add(Arrays.asList("JFK","NRT"));
         tickets.add(Arrays.asList("NRT","JFK"));
-        resultPath = obj.findItinerary(tickets);
+        resultPath = obj.findItinerary2(tickets);
         System.out.println(resultPath);
         // ["JFK","NRT","JFK","KUL"]
 
