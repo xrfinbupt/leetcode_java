@@ -38,6 +38,56 @@ public class no386_exicographical_numbers {
 
         return result;
     }
+
+    /**
+     * 参考解答
+     * https://leetcode-cn.com/problems/lexicographical-numbers/solution/java-zi-dian-xu-de-bian-li-by-ppppjqute/
+     *
+     * 执行用时：4 ms, 在所有 Java 提交中击败了80.80%的用户
+     * 内存消耗：44.3 MB, 在所有 Java 提交中击败了27.02%的用户
+     */
+    public List<Integer> lexicalOrder2(int n) {
+        result = new ArrayList<>();
+        if(n<=0) return new ArrayList<>();
+
+        int curr = 1;
+        for(int i=0;i<n;i++){
+            result.add(curr);
+            if(curr*10<=n){
+                curr = curr*10;
+            }else{
+                if(curr>=n) curr =curr/10;
+                curr++;
+                while(curr%10==0) curr = curr/10;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * 参考解答
+     * https://leetcode-cn.com/problems/lexicographical-numbers/solution/java-zi-dian-xu-de-bian-li-by-ppppjqute/
+     *
+     * 执行用时：4 ms, 在所有 Java 提交中击败了80.80%的用户
+     * 内存消耗：44.3 MB, 在所有 Java 提交中击败了28.05%的用户
+     */
+    public List<Integer> lexicalOrder3(int n) {
+        result = new ArrayList<>();
+        if(n<=0) return new ArrayList<>();
+
+        dfs(n,0,false);
+
+        return result;
+    }
+    private void dfs(int n,int i,boolean flag){
+        if(i>n) return;
+
+        if (flag) result.add(i);
+        for (int x = flag ? 0 : 1; x <= 9; x++) {
+            dfs(n, i * 10 + x, true);
+        }
+    }
     private void dfs(String indexStr,int i,Tree preTree){
         if(indexStr.length() <= i) return;
 
@@ -79,6 +129,6 @@ public class no386_exicographical_numbers {
     }
     public static void main(String args[]){
         no386_exicographical_numbers obj = new no386_exicographical_numbers();
-        System.out.println(obj.lexicalOrder(103));
+        System.out.println(obj.lexicalOrder3(13));
     }
 }
