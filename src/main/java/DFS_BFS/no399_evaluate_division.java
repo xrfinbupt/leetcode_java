@@ -44,38 +44,41 @@ import java.util.*;
  */
 public class no399_evaluate_division {
     Set<String> caseCache = new HashSet<>();
-    Set<Integer> path1Cache = new HashSet<>();
-    Set<Integer> path2Cache = new HashSet<>();
+    Set<Integer> pathCache = new HashSet<>();
     boolean findFlag = false;
     double target = -1.0;
 
     /**
      * 执行用时：1 ms, 在所有 Java 提交中击败了81.60%的用户
      * 内存消耗：37.4 MB, 在所有 Java 提交中击败了22.37%的用户
+     * <p>
+     * 优化一下后：
+     * <p>
+     * 执行用时：2 ms, 在所有 Java 提交中击败了11.42%的用户
+     * 内存消耗：36.9 MB, 在所有 Java 提交中击败了93.98%的用户
      */
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         int len = queries.size();
         double[] result = new double[len];
 
-        for(List<String> iter:equations){
+        for (List<String> iter : equations) {
             caseCache.add(iter.get(0));
             caseCache.add(iter.get(1));
         }
         for (int i = 0; i < queries.size(); i++) {
             List<String> iter = queries.get(i);
-            path1Cache.clear();
-            path2Cache.clear();
+            pathCache.clear();
             findFlag = false;
             target = -1.0;
             String start = iter.get(0);
             String end = iter.get(1);
-            if(start.equals(end)){
-                if(caseCache.contains(start)){
+            if (start.equals(end)) {
+                if (caseCache.contains(start)) {
                     result[i] = 1.0;
-                }else{
+                } else {
                     result[i] = -1.0;
                 }
-            }else {
+            } else {
                 dfs(equations, values, 1, start, end);
                 result[i] = target;
             }
@@ -90,55 +93,138 @@ public class no399_evaluate_division {
             List<String> iter = equations.get(i);
             String A = iter.get(0);
             String B = iter.get(1);
-            if (path1Cache.contains(i)) continue;
+            if (pathCache.contains(i)) continue;
             if (A.equals(start)) {
                 if (B.equals(end)) {
                     findFlag = true;
                     target = preValue * values[i];
                     return;
                 }
-                path1Cache.add(i);
+                pathCache.add(i);
                 dfs(equations, values, preValue * values[i], B, end);
-                path1Cache.remove(i);
+                pathCache.remove(i);
             }
             if (findFlag) return;
 
-            if (path2Cache.contains(i)) continue;
+            if (pathCache.contains(i)) continue;
             if (B.equals(start)) {
                 if (A.equals(end)) {
                     findFlag = true;
                     target = preValue * (1 / values[i]);
                     return;
                 }
-                path2Cache.add(i);
+                pathCache.add(i);
                 dfs(equations, values, preValue * (1 / values[i]), A, end);
-                path2Cache.remove(i);
+                pathCache.remove(i);
+            }
+        }
+    }
+
+
+    Map<String, List<Integer>> map1 = new HashMap<>();
+    Map<String, List<Integer>> map2 = new HashMap<>();
+
+    /**
+     * 执行用时：1 ms, 在所有 Java 提交中击败了81.60%的用户
+     * 内存消耗：37.5 MB, 在所有 Java 提交中击败了7.25%的用户
+     */
+    public double[] calcEquation2(List<List<String>> equations, double[] values, List<List<String>> queries) {
+        int len = queries.size();
+        double[] result = new double[len];
+
+        for (int i = 0; i < equations.size(); i++) {
+            List<String> iter = equations.get(i);
+            String a = iter.get(0);
+            String b = iter.get(1);
+            List<Integer> dataList = map1.getOrDefault(a, new ArrayList<>());
+            dataList.add(i);
+            map1.put(a, dataList);
+
+            dataList = map2.getOrDefault(b, new ArrayList<>());
+            dataList.add(i);
+            map2.put(b, dataList);
+        }
+        for (int i = 0; i < queries.size(); i++) {
+            List<String> iter = queries.get(i);
+            pathCache.clear();
+            findFlag = false;
+            target = -1.0;
+            String start = iter.get(0);
+            String end = iter.get(1);
+            if (start.equals(end)) {
+                if (map1.containsKey(start) || map2.containsKey(start)) {
+                    result[i] = 1.0;
+                } else {
+                    result[i] = -1.0;
+                }
+            } else {
+                dfs2(equations, values, 1, start, end);
+                result[i] = target;
+            }
+        }
+        return result;
+    }
+
+    private void dfs2(List<List<String>> equations, double[] values, double preValue, String start, String end) {
+        List<Integer> posList = map1.get(start);
+        if (posList != null) {
+            for (Integer i : posList) {
+                if (pathCache.contains(i)) continue;
+                List<String> iter = equations.get(i);
+                String next = iter.get(1);
+                if (next.equals(end)) {
+                    findFlag = true;
+                    target = preValue * values[i];
+                    return;
+                } else {
+                    pathCache.add(i);
+                    dfs2(equations, values, preValue * values[i], next, end);
+                    pathCache.remove(i);
+                }
+            }
+        }
+        List<Integer> posList2 = map2.get(start);
+        if (posList2 != null) {
+            for (Integer i : posList2) {
+                if (pathCache.contains(i)) continue;
+
+                List<String> iter = equations.get(i);
+                String next = iter.get(0);
+                if (next.equals(end)) {
+                    findFlag = true;
+                    target = preValue * (1.0 / values[i]);
+                    return;
+                } else {
+                    pathCache.add(i);
+                    dfs2(equations, values, preValue * (1.0 / values[i]), next, end);
+                    pathCache.remove(i);
+                }
             }
         }
     }
 
     public static void main(String args[]) {
         no399_evaluate_division obj = new no399_evaluate_division();
-        List<List<String>> equations = Arrays.asList(Arrays.asList("a","b"),Arrays.asList("b","c"));
-        double[] values = new double[]{2.0,3.0};
-        List<List<String>> queries = Arrays.asList(Arrays.asList("a","c"),Arrays.asList("b","a"),Arrays.asList("a","e"),Arrays.asList("a","a"),Arrays.asList("x","x"));
+        List<List<String>> equations = Arrays.asList(Arrays.asList("a", "b"), Arrays.asList("b", "c"));
+        double[] values = new double[]{2.0, 3.0};
+        List<List<String>> queries = Arrays.asList(Arrays.asList("a", "c"), Arrays.asList("b", "a"), Arrays.asList("a", "e"), Arrays.asList("a", "a"), Arrays.asList("x", "x"));
         double[] result = obj.calcEquation(equations, values, queries);
         System.out.println(JSON.toJSONString(result));
         //输入：equations = [["a","b"],["b","c"]], values = [2.0,3.0], queries = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]
         //输出：[6.00000,0.50000,-1.00000,1.00000,-1.00000]
 
 
-        equations = Arrays.asList(Arrays.asList("a","b"),Arrays.asList("b","c"),Arrays.asList("bc","cd"));
+        equations = Arrays.asList(Arrays.asList("a", "b"), Arrays.asList("b", "c"), Arrays.asList("bc", "cd"));
         values = new double[]{1.5, 2.5, 5.0};
-        queries = Arrays.asList(Arrays.asList("a","c"),Arrays.asList("c","b"),Arrays.asList("bc","cd"),Arrays.asList("cd","bc"));
+        queries = Arrays.asList(Arrays.asList("a", "c"), Arrays.asList("c", "b"), Arrays.asList("bc", "cd"), Arrays.asList("cd", "bc"));
         result = obj.calcEquation(equations, values, queries);
         System.out.println(JSON.toJSONString(result));
         //输入：equations = [["a","b"],["b","c"],["bc","cd"]], values = [1.5,2.5,5.0], queries = [["a","c"],["c","b"],["bc","cd"],["cd","bc"]]
         //输出：[3.75000,0.40000,5.00000,0.20000]
 
-        equations = Arrays.asList(Arrays.asList("a","b"),Arrays.asList("b","c"),Arrays.asList("c","d"));
+        equations = Arrays.asList(Arrays.asList("a", "b"), Arrays.asList("b", "c"), Arrays.asList("c", "d"));
         values = new double[]{2, 3, 5.0};
-        queries = Arrays.asList(Arrays.asList("a","c"),Arrays.asList("b","a"),Arrays.asList("ab","bc"),Arrays.asList("a","a"),Arrays.asList("ax","c"),Arrays.asList("bc","cd"),Arrays.asList("b","d"),Arrays.asList("aa","d"));
+        queries = Arrays.asList(Arrays.asList("a", "c"), Arrays.asList("b", "a"), Arrays.asList("ab", "bc"), Arrays.asList("a", "a"), Arrays.asList("ax", "c"), Arrays.asList("bc", "cd"), Arrays.asList("b", "d"), Arrays.asList("aa", "d"));
         result = obj.calcEquation(equations, values, queries);
         System.out.println(JSON.toJSONString(result));
         //输入：equations = [["a","b"],["b","c"],["bc","cd"]], values = [1.5,2.5,5.0], queries = [["a","c"],["c","b"],["bc","cd"],["cd","bc"]]
