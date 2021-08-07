@@ -1,6 +1,6 @@
 package Tree;
 
-import common.Node1;
+import common.Node;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -37,15 +37,15 @@ public class no117_populating_next_right_pointers_in_each_node_ii {
     /**
      * bfs
      */
-    public Node1 connect(Node1 root) {
+    public Node connect(Node root) {
         if (root == null) return null;
-        Deque<Node1> queue = new ArrayDeque<Node1>();
+        Deque<Node> queue = new ArrayDeque<Node>();
         queue.add(root);
         while (queue.size() > 0) {
             int size = queue.size();
-            Node1 pre = null;
+            Node pre = null;
             for (int i = 0; i < size; i++) {
-                Node1 p = queue.removeFirst();
+                Node p = queue.removeFirst();
                 if (p.left != null) queue.addLast(p.left);
                 if (p.right != null) queue.addLast(p.right);
 
@@ -65,12 +65,12 @@ public class no117_populating_next_right_pointers_in_each_node_ii {
      * 执行用时：1 ms, 在所有 Java 提交中击败了65.59%的用户
      * 内存消耗：38.1 MB, 在所有 Java 提交中击败了47.55%的用户
      */
-    public Node1 connect2(Node1 root) {
+    public Node connect2(Node root) {
         if (root == null) return null;
-        Node1 leftMost = root;
+        Node leftMost = root;
         while(leftMost!=null){
-            Node1 head = leftMost;
-            Node1 left = null;
+            Node head = leftMost;
+            Node left = null;
             boolean nextLeftMostFlag = false;
             while(head!=null){
                 // left
@@ -86,7 +86,7 @@ public class no117_populating_next_right_pointers_in_each_node_ii {
                     leftMost = left;
                 }
 
-                Node1 right = null;
+                Node right = null;
                 boolean flag = false;
                 while (head != null) {
                     if (!flag) {
@@ -121,14 +121,14 @@ public class no117_populating_next_right_pointers_in_each_node_ii {
      * 执行用时：1 ms, 在所有 Java 提交中击败了65.59%的用户
      * 内存消耗：38 MB, 在所有 Java 提交中击败了74.81%的用户
      */
-    public Node1 connect3(Node1 root) {
+    public Node connect3(Node root) {
         if (root == null) return null;
-        Node1 nextNode = root;
+        Node nextNode = root;
         while (nextNode!=null && nextNode.left != null||nextNode!=null && nextNode.right !=null) {
-            Node1 head = nextNode;
+            Node head = nextNode;
             nextNode = null;
-            Node1 left = null;
-            Node1 right = null;
+            Node left = null;
+            Node right = null;
             while (head != null) {
                 if (left == null) {
                     left = head.left;
@@ -168,14 +168,14 @@ public class no117_populating_next_right_pointers_in_each_node_ii {
      * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
      * 内存消耗：38 MB, 在所有 Java 提交中击败了66.89%的用户
      */
-    Node1 last = null,nextStart = null;
-    public Node1 connect4(Node1 root) {
+    Node last = null,nextStart = null;
+    public Node connect4(Node root) {
         if (root == null) return null;
-        Node1 start = root;
+        Node start = root;
         while (start!=null) {
             last = null;
             nextStart = null;
-            for(Node1 p = start;p!=null;p=p.next){
+            for(Node p = start; p!=null; p=p.next){
                 if(p.left!=null) handle(p.left);
                 if(p.right!=null) handle(p.right);
             }
@@ -183,7 +183,7 @@ public class no117_populating_next_right_pointers_in_each_node_ii {
         }
         return root;
     }
-    public void handle(Node1 p){
+    public void handle(Node p){
         if(last!=null){
             last.next = p;
         }
@@ -201,13 +201,13 @@ public class no117_populating_next_right_pointers_in_each_node_ii {
      * @param root
      * @return
      */
-    public Node1 connect5(Node1 root) {
+    public Node connect5(Node root) {
         if (root == null) return root;
 
-        Node1 curr = root;
+        Node curr = root;
         while (curr != null) {
-            Node1 dummy = new Node1(0);
-            Node1 pre = dummy;
+            Node dummy = new Node(0);
+            Node pre = dummy;
             for (; curr != null; curr = curr.next) {
                 if (curr.left != null) {
                     pre.next = curr.left;
@@ -225,23 +225,23 @@ public class no117_populating_next_right_pointers_in_each_node_ii {
 
     public static void main(String args[]){
         no117_populating_next_right_pointers_in_each_node_ii obj = new no117_populating_next_right_pointers_in_each_node_ii();
-        Node1 root = new Node1(1);
-        root.left = new Node1(2);
-        root.right = new Node1(3);
-        root.left.left = new Node1(4);
-        root.left.right = new Node1(5);
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
 
-        root.right.right = new Node1(7);
+        root.right.right = new Node(7);
 
         obj.connect4(root);
         System.out.println();
 
 
-        root = new Node1(3);
-        root.left = new Node1(9);
-        root.right = new Node1(20);
-        root.right.left = new Node1(15);
-        root.right.right = new Node1(7);
+        root = new Node(3);
+        root.left = new Node(9);
+        root.right = new Node(20);
+        root.right.left = new Node(15);
+        root.right.right = new Node(7);
 
 
         obj.connect4(root);

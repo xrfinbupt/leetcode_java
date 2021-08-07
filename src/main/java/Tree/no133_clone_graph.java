@@ -1,7 +1,6 @@
 package Tree;
 
-import com.sun.jmx.remote.internal.ArrayQueue;
-import common.Node;
+import common.graph.Node;
 
 import java.util.*;
 

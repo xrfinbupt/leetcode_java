@@ -1,6 +1,6 @@
 package Tree;
 
-import common.Node1;
+import common.Node;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -40,15 +40,15 @@ public class no116_populating_next_right_pointers_in_each_node {
      * 执行用时：3 ms, 在所有 Java 提交中击败了45.70%的用户
      * 内存消耗：38.3 MB, 在所有 Java 提交中击败了93.92%的用户
      */
-    public Node1 connect(Node1 root) {
+    public Node connect(Node root) {
         if(root == null) return null;
-        Deque<Node1> queue = new ArrayDeque<Node1>();
+        Deque<Node> queue = new ArrayDeque<Node>();
         queue.add(root);
         while(queue.size()>0){
             int size = queue.size();
-            Node1 pre = null;
+            Node pre = null;
             for (int i = 0; i < size; i++) {
-                Node1 p = queue.removeFirst();
+                Node p = queue.removeFirst();
                 if (p.left != null) queue.addLast(p.left);
                 if (p.right != null) queue.addLast(p.right);
 
@@ -68,11 +68,11 @@ public class no116_populating_next_right_pointers_in_each_node {
      * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
      * 内存消耗：38.3 MB, 在所有 Java 提交中击败了95.91%的用户
      */
-    public Node1 connect2(Node1 root) {
+    public Node connect2(Node root) {
         if(root == null) return null;
-        Node1 leftMost = root;
+        Node leftMost = root;
         while(leftMost.left!=null){
-            Node1 head = leftMost;
+            Node head = leftMost;
             while(head!=null){
                 head.left.next = head.right;
 
