@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 import common.TreeNode;
 
@@ -26,7 +26,7 @@ import common.TreeNode;
  *
  * 链接：https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof
  */
-public class no68_lowestCommonAncestor {
+public class offer68_lowestCommonAncestor {
     /**
      * 执行用时：6 ms, 在所有 Java 提交中击败了100%的用户
      * 内存消耗：39.1 MB, 在所有 Java 提交中击败了48.30%的用户

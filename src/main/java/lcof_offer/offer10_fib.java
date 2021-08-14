@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 /**
  *
@@ -26,7 +26,7 @@ package lcof;
  * 链接：https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof
  *
  */
-public class no10_fib {
+public class offer10_fib {
     /**
      * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
      * 内存消耗：35.2 MB, 在所有 Java 提交中击败了59.39%的用户

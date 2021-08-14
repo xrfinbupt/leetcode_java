@@ -1,9 +1,6 @@
-package lcof;
-
-import com.sun.jmx.remote.internal.ArrayQueue;
+package lcof_offer;
 
 import java.util.ArrayDeque;
-import java.util.Queue;
 
 /**
  * 剑指 Offer 09. 用两个栈实现队列
@@ -28,7 +25,7 @@ import java.util.Queue;
  *
  * 链接：https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof
  */
-public class no9_2stackimpl_queue {
+public class offer9_2stackimpl_queue {
 
     ArrayDeque<Integer> first = null;
     ArrayDeque<Integer> second = null;
@@ -37,7 +34,7 @@ public class no9_2stackimpl_queue {
      * 执行用时：53 ms, 在所有 Java 提交中击败了96.65%的用户
      * 内存消耗：46.5 MB, 在所有 Java 提交中击败了77.33%的用户
      */
-    public no9_2stackimpl_queue() {
+    public offer9_2stackimpl_queue() {
         first = new ArrayDeque<>();
         second = new ArrayDeque<>();
     }

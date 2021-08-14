@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 import common.TreeNode;
 
@@ -37,7 +37,7 @@ import java.util.PriorityQueue;
  *
  * 链接：https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof
  */
-public class no54_kthLargest {
+public class offer54_kthLargest {
     int result = 0,k=0;
     boolean flag = false;
     /**
@@ -175,7 +175,7 @@ public class no54_kthLargest {
         TreeNode root = new TreeNode(3);
         //root.left = new TreeNode(1);
         root.right = new TreeNode(4);
-        no54_kthLargest obj = new no54_kthLargest();
+        offer54_kthLargest obj = new offer54_kthLargest();
         int result = obj.kthLargest4(root,2);
         System.out.println(result);
     }

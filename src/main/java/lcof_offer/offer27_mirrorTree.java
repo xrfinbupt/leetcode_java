@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 import common.TreeNode;
 
@@ -32,7 +32,7 @@ import common.TreeNode;
  *
  * 链接：https://leetcode-cn.com/problems/er-cha-shu-de-jing-xiang-lcof
  */
-public class no27_mirrorTree {
+public class offer27_mirrorTree {
     /**
      * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
      * 内存消耗：35.9 MB, 在所有 Java 提交中击败了37.60%的用户

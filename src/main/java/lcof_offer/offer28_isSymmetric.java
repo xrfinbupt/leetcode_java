@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 import common.TreeNode;
 
@@ -39,7 +39,7 @@ import javax.transaction.TransactionRequiredException;
  *
  * 链接：https://leetcode-cn.com/problems/dui-cheng-de-er-cha-shu-lcof
  */
-public class no28_isSymmetric {
+public class offer28_isSymmetric {
     /**
      * 执行用时：1 ms, 在所有 Java 提交中击败了17.02%的用户
      * 内存消耗：37.6 MB, 在所有 Java 提交中击败了6.38%的用户

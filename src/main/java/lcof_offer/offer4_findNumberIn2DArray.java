@@ -1,6 +1,5 @@
-package lcof;
+package lcof_offer;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,7 +28,7 @@ import java.util.Set;
  *
  * 链接：https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof
  */
-public class no4_findNumberIn2DArray {
+public class offer4_findNumberIn2DArray {
     /**
      * 方法1 辅助HashMap查找
      *

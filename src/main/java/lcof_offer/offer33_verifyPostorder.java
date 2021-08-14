@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 /**
  * 剑指 Offer 33. 二叉搜索树的后序遍历序列

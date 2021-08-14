@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 import common.TreeNode;
 
@@ -30,7 +30,7 @@ import java.util.List;
  *
  * 链接：https://leetcode-cn.com/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof
  */
-public class no34_pathSum {
+public class offer34_pathSum {
     List<List<Integer>> result = new ArrayList<>();
 
     /**

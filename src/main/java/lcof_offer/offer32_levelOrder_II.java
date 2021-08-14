@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 import common.TreeNode;
 
@@ -30,7 +30,7 @@ import java.util.List;
  *
  * 链接：https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof
  */
-public class no32_levelOrder_II {
+public class offer32_levelOrder_II {
     /**
      * 执行用时：1 ms, 在所有 Java 提交中击败了95.03%的用户
      * 内存消耗：38.5 MB, 在所有 Java 提交中击败了81.86%的用户

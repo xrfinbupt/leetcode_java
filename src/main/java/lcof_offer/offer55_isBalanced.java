@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 import common.TreeNode;
 
@@ -33,7 +33,7 @@ import common.TreeNode;
  *
  * 链接：https://leetcode-cn.com/problems/ping-heng-er-cha-shu-lcof
  */
-public class no55_isBalanced {
+public class offer55_isBalanced {
     boolean result = true;
 
     /**

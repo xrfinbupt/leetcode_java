@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 import common.TreeNode;
 
@@ -36,7 +36,7 @@ import common.TreeNode;
  *
  * 链接：https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof
  */
-public class no26_isSubStructure {
+public class offer26_isSubStructure {
     boolean result =false;
 
     /**

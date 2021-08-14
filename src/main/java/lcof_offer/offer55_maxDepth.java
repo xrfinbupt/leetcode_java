@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 import common.TreeNode;
 
@@ -21,7 +21,7 @@ import common.TreeNode;
  *
  * 链接：https://leetcode-cn.com/problems/er-cha-shu-de-shen-du-lcof
  */
-public class no55_maxDepth {
+public class offer55_maxDepth {
     int deep = 0;
 
     /**

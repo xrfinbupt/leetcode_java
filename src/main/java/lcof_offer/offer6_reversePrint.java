@@ -1,13 +1,11 @@
-package lcof;
+package lcof_offer;
 
 import common.ListNode;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Deque;
-import java.util.List;
 
-public class no6_reversePrint {
+public class offer6_reversePrint {
     /**
      * 执行用时：2 ms, 在所有 Java 提交中击败了38.16%的用户
      * 内存消耗：38.8 MB, 在所有 Java 提交中击败了90.13%的用户

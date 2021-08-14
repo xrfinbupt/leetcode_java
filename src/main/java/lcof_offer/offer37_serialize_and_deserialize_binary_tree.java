@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 import common.TreeNode;
 
@@ -22,7 +22,7 @@ import java.util.ArrayDeque;
  *
  * 链接：https://leetcode-cn.com/problems/xu-lie-hua-er-cha-shu-lcof
  */
-public class no37_serialize_and_deserialize_binary_tree {
+public class offer37_serialize_and_deserialize_binary_tree {
     // Encodes a tree to a single string.
 
     /**

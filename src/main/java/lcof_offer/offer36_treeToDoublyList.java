@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 import common.Node;
 
@@ -20,7 +20,7 @@ import common.Node;
  * <p>
  * 链接：https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof
  */
-public class no36_treeToDoublyList {
+public class offer36_treeToDoublyList {
     private Node first = null;
 
     /**

@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 /**
  * 剑指 Offer 11. 旋转数组的最小数字

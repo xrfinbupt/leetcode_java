@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 /**
  * 剑指 Offer 10- II. 青蛙跳台阶问题
@@ -24,7 +24,7 @@ package lcof;
  *
  * 链接：https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof
  */
-public class no10_numWays {
+public class offer10_numWays {
     /**
      * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
      * 内存消耗：35.3 MB, 在所有 Java 提交中击败了35.93%的用户

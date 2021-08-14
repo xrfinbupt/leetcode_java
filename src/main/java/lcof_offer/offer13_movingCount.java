@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 /**
  * 剑指 Offer 13. 机器人的运动范围
@@ -19,7 +19,7 @@ package lcof;
  * <p>
  * 链接：https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof
  */
-public class no13_movingCount {
+public class offer13_movingCount {
     boolean findPath[][];
     int mArray[];
     int nArray[];
@@ -77,7 +77,7 @@ public class no13_movingCount {
     }
 
     public static void main(String args[]) {
-        no13_movingCount obj = new no13_movingCount();
+        offer13_movingCount obj = new offer13_movingCount();
         int sum = obj.movingCount(2, 3, 1);
         System.out.println(sum);
 

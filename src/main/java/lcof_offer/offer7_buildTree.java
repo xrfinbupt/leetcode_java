@@ -1,4 +1,4 @@
-package lcof;
+package lcof_offer;
 
 import common.TreeNode;
 
@@ -23,7 +23,7 @@ import common.TreeNode;
  *
  * 链接：https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof
  */
-public class no7_buildTree {
+public class offer7_buildTree {
 
     /**
      * 执行用时：5 ms, 在所有 Java 提交中击败了32.12%的用户
@@ -68,7 +68,7 @@ public class no7_buildTree {
         return;
     }
     public static void main(String args[]){
-        no7_buildTree obj = new no7_buildTree();
+        offer7_buildTree obj = new offer7_buildTree();
         TreeNode result = obj.buildTree(new int[]{3,9,8,15,20,7,6},new int[]{8,9,15,3,7,20,6});
         System.out.println(result);
 
