@@ -102,6 +102,32 @@ public class offer16_myPow {
         }
     }
 
+    /**
+     * 参考官方解答
+     * 执行用时：1 ms, 在所有 Java 提交中击败了66.21%的用户
+     * 内存消耗：37.9 MB, 在所有 Java 提交中击败了13.22%的用户
+     */
+    public double myPow2(double x, int n) {
+        if (x == 0) return 0.0;
+        long tempN = n;
+
+        double res = 1;
+        if (tempN < 0) {
+            tempN = 0 - tempN;
+            x = 1.0 / x;
+        }
+
+        while (tempN > 0) {
+            if ((tempN & 0x01) == 1) {
+                res = res * x;
+            }
+            tempN = tempN >> 1;
+            x = x * x;
+        }
+
+        return res;
+    }
+
     public static void main(String[] args) {
         offer16_myPow obj = new offer16_myPow();
         double x = 2.0;
