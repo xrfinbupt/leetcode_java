@@ -72,13 +72,33 @@ public class offer39_majorityElement {
         if (leftCount > rightCount) return left;
         else return right;
     }
-    public static void main(String[] args){
+
+    /**
+     * 执行用时：1 ms, 在所有 Java 提交中击败了99.96%的用户
+     * 内存消耗：44.3 MB, 在所有 Java 提交中击败了42.20%的用户
+     */
+    public int majorityElement3(int[] nums) {
+        int len = nums.length;
+        if (len == 1) return nums[0];
+
+        int count = 0;
+        int candidate = 0;
+        for (int i = 0; i < len; i++) {
+            if (count == 0) {
+                candidate = nums[i];
+            }
+            count += (candidate == nums[i] ? 1 : -1);
+        }
+        return candidate;
+    }
+
+    public static void main(String[] args) {
         offer39_majorityElement obj = new offer39_majorityElement();
         System.out.println(obj.majorityElement2(new int[]{1, 2, 3, 2, 2, 2, 5, 4, 2}));
         System.out.println(obj.majorityElement2(new int[]{1, 2, 2}));
         System.out.println(obj.majorityElement2(new int[]{2, 2}));
         System.out.println(obj.majorityElement2(new int[]{2, 1, 2}));
         System.out.println(obj.majorityElement2(new int[]{2, 1, 2}));
-        System.out.println(obj.majorityElement2(new int[]{2, 1, 2,3,2}));
+        System.out.println(obj.majorityElement2(new int[]{2, 1, 2, 3, 2}));
     }
 }
