@@ -44,11 +44,9 @@ public class no1_two_sum {
         Map<Integer, Integer> map = new HashMap<>();
         int len = nums.length;
         for (int i = 0; i < len; i++) {
-
             Integer preValue = map.get(target - nums[i]);
             if (preValue == null) {
                 map.put(nums[i], i);
-                continue;
             } else {
                 if (preValue == i) continue;
                 return new int[]{preValue, i};
