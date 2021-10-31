@@ -115,6 +115,7 @@ public class no139_word_break {
             p.isEnd = true;
         }
 
+        failPos = new boolean[300];
         return dfs(s, root, 0);
     }
 
