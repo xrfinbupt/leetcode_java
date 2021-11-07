@@ -1,5 +1,9 @@
 package Bits;
 
+import com.alibaba.fastjson.JSON;
+
+import java.util.HashMap;
+
 /**
  * 338. 比特位计数
  * <p>
@@ -41,7 +45,7 @@ public class no338_counting_bits {
      * 执行用时：2 ms, 在所有 Java 提交中击败了42.56%的用户
      * 内存消耗：42.6 MB, 在所有 Java 提交中击败了23.76%的用户
      */
-    public int[] countBits(int n) {
+    public int[] countBits1(int n) {
         int[] res = new int[n + 1];
         for (int i = 0; i <= n; i++) {
             res[i] = count(i);
@@ -57,5 +61,90 @@ public class no338_counting_bits {
             n = n >> 1;
         }
         return res;
+    }
+
+    private HashMap<Integer, Integer> countMap = new HashMap<>();
+
+    /**
+     * 执行用时：14 ms, 在所有 Java 提交中击败了5.34%的用户
+     * 内存消耗：47.2 MB, 在所有 Java 提交中击败了5.09%的用户
+     */
+    public int[] countBits2(int n) {
+        int[] res = new int[n + 1];
+        res[0] = 0;
+        countMap.put(0, 0);
+
+        int temp = 1;
+        while (temp <= n) {
+            countMap.put(temp, 1);
+            temp = temp << 1;
+        }
+
+        int preKey = 1;
+        int preVal = 0;
+        Integer val = null;
+        for (int i = 1; i <= n; i++) {
+            if (i <= 2) {
+                val = 1;
+                countMap.put(i, val);
+                preKey = i;
+                preVal = val;
+            } else {
+                val = countMap.get(i);
+                if (val != null) {
+                    preKey = i;
+                    preVal = val;
+                } else {
+                    int diff = i - preKey;
+                    val = preVal + countMap.get(diff);
+                    countMap.put(i, val);
+                }
+            }
+            res[i] = val;
+        }
+        return res;
+    }
+
+    /**
+     * 执行用时：6 ms, 在所有 Java 提交中击败了12.09%的用户
+     * 内存消耗：41.9 MB, 在所有 Java 提交中击败了97.06%的用户
+     */
+    public int[] countBits(int n) {
+        int[] res = new int[n + 1];
+        res[0] = 0;
+
+        int temp = 1;
+        while (temp <= n) {
+            res[temp]= 1;
+            temp = temp << 1;
+        }
+
+        int preKey = 1;
+        int preVal = 0;
+        Integer val = null;
+        for (int i = 1; i <= n; i++) {
+            if (i <= 2) {
+                val = 1;
+                res[i] = val;
+                preKey = i;
+                preVal = val;
+            } else {
+                val = res[i];
+                if (val != 0) {
+                    preKey = i;
+                    preVal = val;
+                } else {
+                    int diff = i - preKey;
+                    val = preVal + res[diff];
+                    res[i] = val;
+                }
+            }
+        }
+        return res;
+    }
+    public static void main(String []args){
+        no338_counting_bits obj = new no338_counting_bits();
+        int[] res = obj.countBits(5);
+        System.out.println(JSON.toJSONString(res));
     }
 }
