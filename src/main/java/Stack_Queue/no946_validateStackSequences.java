@@ -1,6 +1,4 @@
-package Stack;
-
-import lcof_offer.offer31_validateStackSequences;
+package Stack_Queue;
 
 import java.util.Stack;
 
