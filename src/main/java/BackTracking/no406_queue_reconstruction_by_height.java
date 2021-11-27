@@ -47,7 +47,7 @@ public class no406_queue_reconstruction_by_height {
      * @param people
      * @return
      */
-    public int[][] reconstructQueue(int[][] people) {
+    public int[][] reconstructQueue1(int[][] people) {
         List<int[]> datas = new ArrayList<>();
         for (int[] iter : people) {
             datas.add(iter);
@@ -70,6 +70,43 @@ public class no406_queue_reconstruction_by_height {
         for (int i = 0; i < len; i++) {
             result[i] = datas.get(i);
             rank(result, i);
+        }
+        return result;
+    }
+
+    /**
+     * 执行用时：17 ms, 在所有 Java 提交中击败了13.36%的用户
+     * 内存消耗：39.4 MB, 在所有 Java 提交中击败了46.13%的用户
+     */
+    public int[][] reconstructQueue(int[][] people) {
+        Arrays.sort(people, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                if (o1[0] != o2[0]) {
+                    return o1[0] - o2[0];
+                } else if (o1[1] != o2[1]) {
+                    return o2[1] - o1[1];
+                }
+                return 0;
+            }
+        });
+        int len = people.length;
+        int[][] result = new int[len][];
+
+        for (int i = 0; i < len; i++) {
+            int[] iter = people[i];
+            int temp = iter[1];
+            int index = -1;
+            for (int j = 0; j < len; j++) {
+                if (result[j] == null) {
+                    temp--;
+                }
+                if (temp < 0) {
+                    index = j;
+                    break;
+                }
+            }
+            result[index] = iter;
         }
         return result;
     }
