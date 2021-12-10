@@ -32,7 +32,7 @@ public class no647_palindromic_substrings {
      * 执行用时：11 ms, 在所有 Java 提交中击败了26.79%的用户
      * 内存消耗：38.1 MB, 在所有 Java 提交中击败了48.64%的用户
      */
-    public int countSubstrings(String s) {
+    public int countSubstrings1(String s) {
         int len = s.length();
         int result = 0;
         boolean[][] dp = new boolean[len][len];
@@ -56,6 +56,29 @@ public class no647_palindromic_substrings {
         }
 
         return result;
+    }
+
+    /**
+     * 参考官方解答
+     *
+     * 执行用时：3 ms, 在所有 Java 提交中击败了88.70%的用户
+     * 内存消耗：36.1 MB, 在所有 Java 提交中击败了98.54%的用户
+     */
+    public int countSubstrings(String s) {
+        int len = s.length();
+        int res = 0;
+        // 3 [0,5]  0,1  2,3  4,5
+        // 4 [0,7]
+        for (int i = 0; i < 2 * len - 1; i++) {
+            int l = i / 2;
+            int r = i / 2 + i % 2;
+            while (l >= 0 && r < len && s.charAt(l) == s.charAt(r)) {
+                l--;
+                r++;
+                res++;
+            }
+        }
+        return res;
     }
 
     public static void main(String[] args) {
