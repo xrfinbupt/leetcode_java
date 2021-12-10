@@ -50,7 +50,7 @@ public class no621_task_scheduler {
      * 执行用时：128 ms, 在所有 Java 提交中击败了5.03%的用户
      * 内存消耗：39.9 MB, 在所有 Java 提交中击败了22.94%的用户
      */
-    public int leastInterval(char[] tasks, int n) {
+    public int leastInterval1(char[] tasks, int n) {
         if (n == 0) return tasks.length;
 
         int len = tasks.length;
@@ -132,6 +132,54 @@ public class no621_task_scheduler {
         return result;
     }
 
+    public int leastInterval(char[] tasks, int n) {
+        if (n == 0) return tasks.length;
+
+        int[] valArray = new int[26];
+        PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                if (o1[1] != o2[1]) {
+                    return o1[1] - o2[1];
+                } else if (o1[2] != o2[2]) {
+                    return o2[2] - o1[2];
+                }
+                return 0;
+            }
+        });
+
+        for (char ch : tasks) {
+            int key = ch - 'A';
+            valArray[key]++;
+        }
+        for (int i = 0; i < 26; i++) {
+            int all = valArray[i];
+            if (all == 0) continue;
+            queue.add(new int[]{i, 0, all});
+        }
+
+        int result = 0;
+        int time = -1;
+        while (!queue.isEmpty()) {
+            time++;
+            result++;
+            int[] temp = queue.peek();
+            int all = temp[2];
+            int waitCount = temp[1];
+            if (time!=0 && time <= waitCount) {
+                continue;
+            }
+            queue.poll();
+
+            if (all > 1) {
+                temp[1] = time + n;
+                temp[2] = all - 1;
+                queue.add(temp);
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         no621_task_scheduler obj = new no621_task_scheduler();
         int res = obj.leastInterval(new char[]{'A', 'A', 'A', 'B', 'B', 'B'}, 2);
@@ -147,7 +195,7 @@ public class no621_task_scheduler {
         System.out.println(res);
 
         res = obj.leastInterval(new char[]{'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G'}, 2);
-        System.out.println(res);
+        System.out.println(res);//16
 
         res = obj.leastInterval(new char[]{'A', 'A', 'A', 'B', 'B', 'B', 'C', 'C', 'C', 'D', 'D', 'E'}, 2);
         System.out.println(res);//12
