@@ -40,7 +40,7 @@ package Greedy;
  * 开往 1 号加油站，此时油箱有 3 - 3 + 3 = 3 升汽油
  * 你无法返回 2 号加油站，因为返程需要消耗 4 升汽油，但是你的油箱只有 3 升汽油。
  * 因此，无论怎样，你都不可能绕环路行驶一周。
- *
+ * <p>
  * Constraints:
  * gas.length == n
  * cost.length == n
@@ -54,7 +54,71 @@ package Greedy;
  * @Date 2021/12/12
  */
 public class no134_gas_station {
+    /**
+     * 执行用时：40 ms, 在所有 Java 提交中击败了15.56%的用户
+     * 内存消耗：59.1 MB, 在所有 Java 提交中击败了26.59%的用户
+     */
     public int canCompleteCircuit(int[] gas, int[] cost) {
-        return 0;
+        int len = gas.length;
+        int sum = 0;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < len; i++) {
+            int diff = gas[i] - cost[i];
+            max = Math.max(max, diff);
+            sum += diff;
+        }
+        if (sum < 0) {
+            return -1;
+        }
+
+        for (int i = 0; i < len; i++) {
+            int diff = gas[i] - cost[i];
+            if (max == 0) {
+                if (diff == 0 && check(gas, cost, i)) {
+                    return i;
+                }
+            } else {
+                if (diff > 0 && check(gas, cost, i)) {
+                    return i;
+                }
+            }
+
+        }
+
+        return -1;
+    }
+
+    private boolean check(int[] gas, int[] cost, int i) {
+        int len = gas.length;
+        int count = 0;
+        int sum = 0;
+        while (count < len) {
+            int index = i % len;
+            sum += (gas[index] - cost[index]);
+            if (sum < 0) {
+                return false;
+            }
+            count++;
+            i++;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        no134_gas_station obj = new no134_gas_station();
+        int res = obj.canCompleteCircuit(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 5, 1, 2});
+        System.out.println(res);
+
+        res = obj.canCompleteCircuit(new int[]{2, 3, 4}, new int[]{3, 4, 3});
+        System.out.println(res);
+
+        res = obj.canCompleteCircuit(new int[]{2, 2}, new int[]{2, 2});
+        System.out.println(res);
+
+        res = obj.canCompleteCircuit(new int[]{2}, new int[]{2});
+        System.out.println(res);
+
+        res = obj.canCompleteCircuit(new int[]{5, 8, 2, 8}, new int[]{6, 5, 6, 6});
+        System.out.println(res);
     }
 }
