@@ -40,6 +40,10 @@ import java.util.Comparator;
  * @Date 2021/12/26
  */
 public class no435_non_overlapping_intervals {
+    /**
+     * 执行用时：67 ms, 在所有 Java 提交中击败了14.38%的用户
+     * 内存消耗：94.5 MB, 在所有 Java 提交中击败了50.27%的用户
+     */
     public int eraseOverlapIntervals(int[][] intervals) {
         Arrays.sort(intervals, new Comparator<int[]>() {
             @Override
@@ -54,10 +58,55 @@ public class no435_non_overlapping_intervals {
 
         int len = intervals.length;
         int result = 0;
-        for(int i=0;i<len;i++){
-
+        int e = intervals[0][1];
+        for (int i = 1; i < len; i++) {
+            int [] curr = intervals[i];
+            if(e>curr[0]){
+                result++;
+                if(e > curr[1]){
+                    e = curr[1];
+                }
+            }else{
+                e = curr[1];
+            }
         }
 
         return result;
+    }
+
+    public static void main(String[] args) {
+        no435_non_overlapping_intervals obj = new no435_non_overlapping_intervals();
+        int[][] intervals = new int[][]{{1,2}, {2,3}, {3,4}, {1,3}};
+        int res = obj.eraseOverlapIntervals(intervals);
+        System.out.println("res="+res);
+        //输入: [ [1,2], [2,3], [3,4], [1,3] ]
+        //输出: 1
+
+        intervals = new int[][]{{1,2}, {1,2}, {1,2}};
+        res = obj.eraseOverlapIntervals(intervals);
+        System.out.println("res="+res);
+        //输入: [ [1,2], [1,2], [1,2] ]
+        //输出: 2
+
+        intervals = new int[][]{{1,12}};
+        res = obj.eraseOverlapIntervals(intervals);
+        System.out.println("res="+res);
+        //输入: [ [1,12] ]
+        //输出: 0
+
+        intervals = new int[][]{{-11,-2},{-12,-3},{-3,4},{-1,3}};
+        res = obj.eraseOverlapIntervals(intervals);
+        System.out.println("res="+res);
+        // 2
+
+        intervals = new int[][]{{1,9},{2,3},{3,4},{7,13}};
+        res = obj.eraseOverlapIntervals(intervals);
+        System.out.println("res="+res);
+        // 1
+
+        intervals = new int[][]{{1,9},{2,3},{3,4},{7,13}};
+        res = obj.eraseOverlapIntervals(intervals);
+        System.out.println("res="+res);
+        // 1
     }
 }
