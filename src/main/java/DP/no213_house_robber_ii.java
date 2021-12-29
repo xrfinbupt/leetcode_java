@@ -34,7 +34,7 @@ public class no213_house_robber_ii {
      * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
      * 内存消耗：35.9 MB, 在所有 Java 提交中击败了39.26%的用户
      */
-    public int rob(int[] nums) {
+    public int rob1(int[] nums) {
         int result1 = task(nums);
 
         for (int i = 0, j = nums.length - 1; i < j; i++, j--) {
@@ -75,12 +75,40 @@ public class no213_house_robber_ii {
 
         return Math.max(f,g);
     }
+
+    /**
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：35.8 MB, 在所有 Java 提交中击败了48.50%的用户
+     * @param nums
+     * @return
+     */
+    public int rob(int[] nums) {
+        int len = nums.length;
+        if(len == 1) return nums[0];
+
+        int sum0 = 0,pre2Sum=0,pre1Sum=0;
+        for(int i=0;i<len-1;i++){
+            sum0 = Math.max(pre2Sum+nums[i],pre1Sum);
+            pre2Sum = pre1Sum;
+            pre1Sum = sum0;
+        }
+
+        int sum1 = 0;
+        pre2Sum=0;
+        pre1Sum=0;
+        for(int i=1;i<len;i++){
+            sum1 = Math.max(pre2Sum+nums[i],pre1Sum);
+            pre2Sum = pre1Sum;
+            pre1Sum = sum1;
+        }
+        return Math.max(sum0,sum1);
+    }
     public static void main(String args[]){
         no213_house_robber_ii obj = new no213_house_robber_ii();
         int result = obj.rob(new int[]{2,3,2});
         System.out.println(result);
 
-        result = obj.rob(new int[]{1,2,3,1});
+        result = obj.rob1(new int[]{1,2,3,1});
         System.out.println(result);
 
         result = obj.rob(new int[]{1});

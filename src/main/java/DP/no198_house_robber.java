@@ -42,6 +42,20 @@ public class no198_house_robber {
         return Math.max(f, g);
     }
 
+    public int rob1(int[] nums) {
+        if (nums.length == 1) return nums[0];
+
+        int presum2 = 0, presum1 = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int val = nums[i];
+
+            int sum = Math.max(presum2+val, presum1);
+            presum2 = presum1;
+            presum1 = sum;
+        }
+        return Math.max(presum1, presum2);
+    }
+
     public static void main(String args[]) {
         no198_house_robber obj = new no198_house_robber();
         System.out.println(obj.rob(new int[]{1, 2, 3, 1}));
