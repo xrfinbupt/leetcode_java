@@ -37,7 +37,7 @@ public class no45_jump_game_ii {
      * 执行用时：45 ms, 在所有 Java 提交中击败了18.49%的用户
      * 内存消耗：39 MB, 在所有 Java 提交中击败了67.24%的用户
      */
-    public int jump(int[] nums) {
+    public int jump1(int[] nums) {
         int len = nums.length;
         int[] dp = new int[len];
         Arrays.fill(dp, Integer.MAX_VALUE);
@@ -53,5 +53,50 @@ public class no45_jump_game_ii {
             }
         }
         return dp[len - 1];
+    }
+
+    /**
+     * 题解 https://leetcode-cn.com/problems/jump-game-ii/solution/tiao-yue-you-xi-ii-by-leetcode-solution/
+     *
+     * 执行用时：2 ms, 在所有 Java 提交中击败了46.62%的用户
+     * 内存消耗：39.4 MB, 在所有 Java 提交中击败了18.39%的用户
+     */
+    public int jump2(int[] nums) {
+        int len = nums.length;
+
+        int count = 0;
+        int endPos = nums[0];
+        int maxPos = 0;
+        for (int i = 1; i < len; i++) {
+            maxPos = Math.max(maxPos, i + nums[i]);
+            if (endPos == i || i == len - 1) {
+                endPos = maxPos;
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    /**
+     * 双指针 DP
+     *
+     * 执行用时：1 ms, 在所有 Java 提交中击败了98.97%的用户
+     * 内存消耗：38.9 MB, 在所有 Java 提交中击败了79.10%的用户
+     * @param nums
+     * @return
+     */
+    public int jump(int[] nums) {
+        int len = nums.length;
+        int []dp = new int[len];
+
+        int j=0;
+        for (int i = 1; i < len; i++) {
+            while(j + nums[j] < i) j++;
+
+            dp[i] = dp[j] + 1;
+        }
+
+        return dp[len-1];
     }
 }
