@@ -1,4 +1,4 @@
-package Array;
+package DP;
 
 /**
  * 55. 跳跃游戏
