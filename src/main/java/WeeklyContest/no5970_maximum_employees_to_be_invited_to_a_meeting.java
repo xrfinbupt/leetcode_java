@@ -62,10 +62,11 @@ public class no5970_maximum_employees_to_be_invited_to_a_meeting {
 
     /**
      * 超时了
+     *
      * @param favorite
      * @return
      */
-    public int maximumInvitations(int[] favorite) {
+    public int maximumInvitations1(int[] favorite) {
         ringCountMap.clear();
         twoRingRelationMap.clear();
         path.clear();
@@ -139,6 +140,67 @@ public class no5970_maximum_employees_to_be_invited_to_a_meeting {
         path.put(i, val + 1);
         int next = favorite[i];
         dfs(first, next, favorite);
+    }
+
+    /**
+     * 参考答案
+     * https://leetcode-cn.com/problems/maximum-employees-to-be-invited-to-a-meeting/solution/nei-xiang-ji-huan-shu-tuo-bu-pai-xu-fen-c1i1b/
+     */
+    public int maximumInvitations(int[] favorite) {
+        //定义邻接表
+        ArrayList<Integer>[] loveList = new ArrayList[favorite.length];
+        for (int i = 0; i < favorite.length; i++) {
+            loveList[i] = new ArrayList<>();
+        }
+        //list[i] 表示由喜欢 i 的人组成的列表
+        for (int i = 0; i < favorite.length; i++) {
+            loveList[favorite[i]].add(i);
+        }
+
+        // result_1 为第一种方案可以邀请的最大员工数
+        int result_1 = 0;
+
+        //计算第一种方案可以邀请的最大员工数
+        for (int i = 0; i < favorite.length; i++) {
+            // i < favorite[i] ：避免重复计算
+            // favorite[favorite[i]] == i：即 i 和 favorite[i] 两情相悦
+            result_1 += (i < favorite[i] || favorite[favorite[i]] != i) ? 0 : maximumInvitations(i, favorite[i], loveList) + maximumInvitations(favorite[i], i, loveList);
+        }
+
+        // result_2 为第二种方案可以邀请的最大员工数
+        int result_2 = 0;
+        int []visited = new int[favorite.length];
+        for (int i = 0; i < favorite.length; i++) {
+            if (visited[i] == 0) {
+                int j = i;
+                HashMap<Integer, Integer> map = new HashMap<>();
+                for (int k = 0; visited[j] == 0; j = favorite[j]) {
+                    visited[j] = 1;
+                    map.put(j, k++);
+                }
+                //计算第二种方案可以邀请的最大员工数：即环的最大长度
+                // 退出循环时，j 为环节点，map.size() - map.getOrDefault(j, map.size()) 为环长度
+                result_2 = Math.max(result_2, map.size() - map.getOrDefault(j, map.size()));
+            }
+        }
+        //比较两种方案的结果，返回最大值
+        return Math.max(result_1, result_2);
+    }
+
+    /**
+     * dfs 方法
+     *
+     * 计算最大能邀请的人数（包括 i）
+     */
+    private int maximumInvitations(int i, int j, ArrayList<Integer>[] loveList) {
+        int max = 0;
+        for (int k : loveList[i]) {
+            // k == j 用于避免死循环
+            if (k == j) continue;
+
+            max = Math.max(max, maximumInvitations(k, j, loveList));
+        }
+        return 1 + max;
     }
 
     public static void main(String[] args) {
