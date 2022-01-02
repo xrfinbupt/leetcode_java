@@ -1,4 +1,4 @@
-package Array;
+package DP;
 
 /**
  * 1014. 最佳观光组合
@@ -43,6 +43,12 @@ public class no1014_best_sightseeing_pair {
     }
 
     /**
+     * https://leetcode-cn.com/problems/best-sightseeing-pair/solution/1014-zui-jia-guan-guang-zu-he-dpsi-xiang-eted/
+     * 得到状态转化方程：
+     * dp[i] = Math.max(dp[i-1],i+values[i]) (统计当前最大值)
+     * 滚动数组中的变量：
+     * max = Math.max(max,dp[i-1] + values[i] - i)
+     *
      * 一对景点（i < j）组成的观光组合的得分为 values[i] + values[j] + i - j  ====  values[i] + i + values[j] - j
      * @param values
      * @return
