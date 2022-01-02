@@ -20,6 +20,7 @@ https://leetcode-cn.com/progress/ 温习之前刷过的题目
 ```
 | 时间      | 说明 |   
 | :--------- | :--: | 
+|   2021年12月26日   | leetcode 刷题量 300题 |
 |   2021年6月20日总结   |  [为了更快的砍柴，每日磨刀：LeetCode刷题半年的思考和总结](https://mp.weixin.qq.com/s/0YqBCiTcRtk6hijGE7RfOw)  |
 |   2021年6月13日有感   | 148题 进入leetcode 10万排名内 |
 |   2021年5月25日有感   | talk is cheap show me the action and result |
