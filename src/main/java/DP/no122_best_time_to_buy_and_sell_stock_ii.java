@@ -1,4 +1,4 @@
-package Array;
+package DP;
 
 /**
  * 122. 买卖股票的最佳时机 II
@@ -83,14 +83,16 @@ public class no122_best_time_to_buy_and_sell_stock_ii {
         if (prices == null || prices.length == 0) return 0;
 
         int len = prices.length;
-        int pre0 = 0;
-        int pre1 = 0 - prices[0];
+        int dp0 = 0;
+        int dp1 = 0 - prices[0];
         for (int i = 1; i < len; i++) {
-            pre0 = Math.max(pre0, pre1 + prices[i]);
-            pre1 = Math.max(pre0 - prices[i], pre1);
+            int pre0 = Math.max(dp0, dp1 + prices[i]);
+            int pre1 = Math.max(dp0 - prices[i], dp1);
+            dp0 = pre0;
+            dp1 = pre1;
         }
 
-        return pre0;
+        return dp0;
     }
 
 }
