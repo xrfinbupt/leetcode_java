@@ -54,7 +54,7 @@ public class no309_best_time_to_buy_and_sell_stock_with_cooldown {
      */
     public int maxProfit(int[] prices) {
         int len = prices.length;
-        int[][] dp = new int[len][3]; //交易的情况
+        int[][] dp = new int[len][3]; //交易的情况 0:持有的资产 1：交易后进入冷冻期的资产 2 结束冷冻期的最大资产
 
         dp[0][0] = 0 - prices[0];
         for (int i = 1; i < len; i++) {
