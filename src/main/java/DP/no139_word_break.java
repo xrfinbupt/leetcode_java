@@ -1,4 +1,4 @@
-package String;
+package DP;
 
 import common.TrieNode;
 
@@ -44,28 +44,33 @@ public class no139_word_break {
     boolean failPos[] = new boolean[300];
 
     /**
-     * 超时了
+     * 执行用时：4 ms, 在所有 Java 提交中击败了81.87%的用户
+     * 内存消耗：38 MB, 在所有 Java 提交中击败了86.35%的用户
      */
-    public boolean wordBreak_org(String s, List<String> wordDict) {
+    public boolean wordBreak(String s, List<String> wordDict) {
         if (s == null || s.length() == 0) return false;
         if (wordDict == null || wordDict.size() == 0) return false;
 
-        boolean flag = false;
-        for (String iter : wordDict) {
-            if (s.startsWith(iter)) {
-                String tempS = s.replace(iter, "");
-                if (tempS.length() == 0) {
-                    return true;
+        int len = s.length();
+        boolean[] dp = new boolean[len];
+        int nextMax = 0;
+        for (int i = 0; i < len; i++) {
+            boolean preFlag = i > 0 ? dp[i - 1] : true;
+            if (!preFlag) continue;
+            if (i > nextMax + 1) return false;
+
+            for (String iter : wordDict) {
+                int sLen = iter.length();
+                if (i + sLen - 1 >= len) continue;
+                if (dp[i + sLen - 1]) continue;
+                String subStr = s.substring(i, i + sLen);
+                if (subStr.equals(iter)) {
+                    dp[i + sLen - 1] = true;
+                    nextMax = Math.max(nextMax, i + sLen - 1);
                 }
-                tempS = s.replaceFirst(iter, "");
-                if (tempS.length() == 0) {
-                    return true;
-                }
-                flag = wordBreak(tempS, wordDict);
             }
-            if (flag) break;
         }
-        return flag;
+        return dp[len - 1];
     }
 
     /**
@@ -94,7 +99,7 @@ public class no139_word_break {
      * 执行用时：1 ms, 在所有 Java 提交中击败了99.67%的用户
      * 内存消耗：38.4 MB, 在所有 Java 提交中击败了68.27%的用户
      */
-    public boolean wordBreak(String s, List<String> wordDict) {
+    public boolean wordBreak1(String s, List<String> wordDict) {
         TrieNode root = new TrieNode();
         for (String word : wordDict) {
             char firstCh = word.charAt(0);
@@ -144,6 +149,9 @@ public class no139_word_break {
     public static void main(String[] args) {
         no139_word_break obj = new no139_word_break();
         boolean flag = obj.wordBreak("leetcode", Arrays.asList("leet", "code"));
+        System.out.println(flag);
+
+        flag = obj.wordBreak("abcd", Arrays.asList("a", "abc", "b", "cd"));
         System.out.println(flag);
 
         flag = obj.wordBreak("applepenapple", Arrays.asList("apple", "pen"));
