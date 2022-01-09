@@ -1,4 +1,4 @@
-package Array;
+package DP;
 
 /**
  * 42. 接雨水
@@ -23,7 +23,7 @@ package Array;
  */
 public class no42_trapping_rain_water {
     /**
-     * 动态规划 双指针
+     * 动态规划 双指针（left_dp,right_dp）
      * @param height
      * @return
      */
