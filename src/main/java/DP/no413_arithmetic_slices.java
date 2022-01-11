@@ -37,13 +37,12 @@ public class no413_arithmetic_slices {
      */
     public int numberOfArithmeticSlices(int[] nums) {
         int len = nums.length;
-        int dp = 0;
+        int []dp = new int[len];
         int result = 0;
         for (int i = 2; i < len; i++) {
             if (nums[i - 1] - nums[i - 2] == nums[i] - nums[i - 1]) {
-                int new_dp = dp + 1;
-                result += new_dp;
-                dp = new_dp;
+                dp[i] = dp[i-1] + 1;
+                result += dp[i];
             }
         }
         return result;
