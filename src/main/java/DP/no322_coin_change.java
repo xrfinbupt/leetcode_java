@@ -87,11 +87,10 @@ public class no322_coin_change {
     }
 
     /**
+     * 动态规划 bottom-up
+     * <p>
      * 执行用时：13 ms, 在所有 Java 提交中击败了59.27%的用户
      * 内存消耗：37.6 MB, 在所有 Java 提交中击败了87.00%的用户
-     * @param coins
-     * @param amount
-     * @return
      */
     public int coinChange(int[] coins, int amount) {
         int[] dp = new int[amount + 1];
@@ -107,6 +106,37 @@ public class no322_coin_change {
         }
         int res = dp[amount];
         return res > amount ? -1 : res;
+    }
+
+    /**
+     * 动态规划 top-down
+     */
+    public int coinChange_dp(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        if (amount < 1) return 0;
+
+        return calTarget(coins, amount, dp);
+    }
+
+    private int calTarget(int[] coins, int amount, int[] dp) {
+        if (amount < 0) return -1;
+        else if (amount == 0) return 0;
+        else if (dp[amount] != 0) {
+            return dp[amount];
+        } else {
+            int min = Integer.MAX_VALUE;
+            for (int i = 0; i < coins.length; i++) {
+                if (coins[i] > amount) continue;
+
+                int temp = calTarget(coins, amount - coins[i], dp);
+                if (temp >= 0 && temp < min) {
+                    min = temp + 1;
+                }
+            }
+            dp[amount] = min;
+
+            return min <= amount ? min : -1;
+        }
     }
 
     private int dfs(int[] coins, int amount) {
