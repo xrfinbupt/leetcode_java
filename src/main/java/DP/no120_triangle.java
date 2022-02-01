@@ -39,7 +39,7 @@ import java.util.List;
 public class no120_triangle {
     /**
      * 动态规划 bottom-up
-     *
+     * <p>
      * 执行用时：2 ms, 在所有 Java 提交中击败了96.17%的用户
      * 内存消耗：40.6 MB, 在所有 Java 提交中击败了5.30%的用户
      */
@@ -61,6 +61,34 @@ public class no120_triangle {
                     pre2 = dp[j + 1];
                 }
             }
+        }
+
+        int min = dp[0];
+        for (int i = 1; i < len; i++) {
+            min = Math.min(min, dp[i]);
+        }
+        return min;
+    }
+
+    /**
+     * 动态规划 bottom-up
+     * 参考官方解答 优化了一下
+     *
+     * @param triangle
+     * @return
+     */
+    public int minimumTotal2(List<List<Integer>> triangle) {
+        int len = triangle.size();
+        int[] dp = new int[len];
+
+        dp[0] = triangle.get(0).get(0);
+        for (int i = 1; i < len; i++) {
+            List<Integer> rows = triangle.get(i);
+            dp[i] = dp[i - 1] + rows.get(i);
+            for (int j = i - 1; j > 0; j--) {
+                dp[j] = Math.min(dp[j], dp[j - 1]) + rows.get(j);
+            }
+            dp[0] = dp[0] + rows.get(0);
         }
 
         int min = dp[0];
